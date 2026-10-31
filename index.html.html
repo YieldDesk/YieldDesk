@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YieldDesk - All-in-One FD Interest, Loan EMI & SIP Financial Calculator</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Free online financial calculator suite. Calculate Bank FD interest rates (Monthly, Quarterly, Maturity payouts), Loan EMIs with amortization schedules, SIP Step-Up growth, Compound Interest, FIRE Retirement corpus, CAGR, and Loan Prepayment savings.">
+    <meta name="keywords" content="FD interest rate calculator, bank fixed deposit calculator, loan EMI calculator, home loan EMI schedule, SIP step up calculator, compound interest calculator, retirement FIRE calculator, CAGR return calculator, recurring deposit RD calculator">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="YieldDesk Financial Suite">
+    <link rel="canonical" href="https://yielddesk.app">
+
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yielddesk.app">
+    <meta property="og:title" content="YieldDesk - Bank FD, Loan EMI & SIP Calculator Suite">
+    <meta property="og:description" content="Calculate Fixed Deposit maturity, monthly interest payouts, home loan EMIs, mutual fund SIP step-up returns, and retirement planning easily in one app.">
+    <meta property="og:image" content="https://placehold.co/1200x630/1e1b4b/818cf8?text=YieldDesk+Financial+Calculators">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="YieldDesk - All-in-One Financial Calculator">
+    <meta name="twitter:description" content="Calculate FD maturity payouts, home loan EMIs, SIP growth, and FIRE retirement targets online.">
+
+    <!-- Structured Data / JSON-LD Schema for Google Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "YieldDesk Financial Calculator",
+      "url": "https://yielddesk.app",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript. Requires HTML5.",
+      "description": "Comprehensive bank FD calculator, loan EMI planner, SIP step-up calculator, and retirement FIRE tool with instant multi-currency support.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is Fixed Deposit (FD) interest calculated for monthly and quarterly payouts?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For cumulative FDs, interest compounds quarterly until maturity. For monthly or quarterly payout options, interest is calculated at simple interest rates divided by 12 or 4 respectively, and disbursed regularly to your bank account."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is an EMI and how is Home Loan interest computed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Equated Monthly Installment (EMI) consists of principal reduction and monthly interest. It is calculated using the formula: EMI = [P x R x (1+R)^N]/[(1+R)^N-1], where P is Principal, R is monthly interest rate, and N is duration in months."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How does a Step-Up SIP increase mutual fund returns?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A Step-Up SIP increases your monthly contribution annually by a fixed percentage (e.g. +10% every year as your salary increases), accelerating your long-term wealth compound accumulation significantly."
+          }
+        }
+      ]
+    }
+    </script>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#eef2ff',
+                            100: '#e0e7ff',
+                            500: '#6366f1',
+                            600: '#4f46e5',
+                            700: '#4338ca',
+                            900: '#312e81',
+                        },
+                        emeraldCustom: '#10b981',
+                        roseCustom: '#f43f5e',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at top left, #1e1b4b, #0f172a, #090d16);
+            min-height: 100vh;
+            color: #f3f4f6;
+        }
+
+        /* Glassmorphic custom utilities */
+        .glass-panel {
+            background: rgba(30, 41, 59, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .glass-input {
+            background: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: #f9fafb;
+            transition: all 0.2s ease;
+        }
+
+        .glass-input:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+            outline: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(15, 23, 42, 0.6);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(99, 102, 241, 0.4);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(99, 102, 241, 0.7);
+        }
+
+        /* Input Range Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 18px;
+            width: 18px;
+            border-radius: 50%;
+            background: #818cf8;
+            cursor: pointer;
+            margin-top: -6px;
+            box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
+            border: 2px solid #ffffff;
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 6px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-100 min-h-screen flex flex-col justify-between">
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed top-5 right-5 z-50 transform translate-y-[-150%] opacity-0 transition-all duration-300 flex items-center gap-3 bg-indigo-600 text-white px-5 py-3 rounded-xl shadow-2xl border border-indigo-400">
+        <i data-lucide="check-circle" class="w-5 h-5"></i>
+        <span id="toast-message" class="text-sm font-medium">Notification message</span>
+    </div>
+
+    <!-- Top Navigation Header -->
+    <header class="border-b border-white/10 glass-panel sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="p-2.5 bg-gradient-to-tr from-indigo-600 to-purple-500 rounded-xl shadow-lg shadow-indigo-500/30">
+                    <i data-lucide="calculator" class="w-6 h-6 text-white"></i>
+                </div>
+                <div>
+                    <h1 class="font-bold text-lg text-white tracking-wide flex items-center gap-2">
+                        YieldDesk <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">Pro</span>
+                    </h1>
+                    <p class="text-xs text-gray-400">All-in-One Bank Interest, EMI & Investment Calculator</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <!-- Currency Picker with Regional Selection -->
+                <div class="flex items-center bg-slate-900/80 rounded-xl p-1 border border-white/10 text-xs font-medium">
+                    <select id="currency-select" onchange="setCurrency(this.value)" class="bg-transparent text-indigo-300 font-semibold px-2 py-1 focus:outline-none cursor-pointer">
+                        <option value="₹|INR|en-IN" class="bg-slate-900 text-white">🇮🇳 ₹ INR (India)</option>
+                        <option value="$|USD|en-US" class="bg-slate-900 text-white">🇺🇸 $ USD (United States)</option>
+                        <option value="£|GBP|en-GB" class="bg-slate-900 text-white">🇬🇧 £ GBP (United Kingdom)</option>
+                        <option value="€|EUR|de-DE" class="bg-slate-900 text-white">🇪🇺 € EUR (Eurozone)</option>
+                        <option value="CA$|CAD|en-CA" class="bg-slate-900 text-white">🇨🇦 CA$ CAD (Canada)</option>
+                        <option value="A$|AUD|en-AU" class="bg-slate-900 text-white">🇦🇺 A$ AUD (Australia)</option>
+                        <option value="AED|AED|ar-AE" class="bg-slate-900 text-white">🇦🇪 AED (UAE)</option>
+                        <option value="S$|SGD|en-SG" class="bg-slate-900 text-white">🇸🇬 S$ SGD (Singapore)</option>
+                        <option value="¥|JPY|ja-JP" class="bg-slate-900 text-white">🇯🇵 ¥ JPY (Japan)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow w-full">
+        
+        <!-- Navigation Tabs for All Popular Calculators -->
+        <div class="flex flex-col mb-8 gap-4">
+            <div class="flex flex-wrap p-1.5 bg-slate-900/80 backdrop-blur-md rounded-2xl border border-white/10 gap-1" id="tab-navigation">
+                <button id="tab-fd" onclick="switchTab('fd')" class="tab-btn active-tab flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200">
+                    <i data-lucide="piggy-bank" class="w-4 h-4"></i> Fixed Deposit
+                </button>
+                <button id="tab-loan" onclick="switchTab('loan')" class="tab-btn inactive-tab flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200">
+                    <i data-lucide="landmark" class="w-4 h-4"></i> Loan EMI
+                </button>
+                <button id="tab-sip" onclick="switchTab('sip')" class="tab-btn inactive-tab flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200">
+                    <i data-lucide="trending-up" class="w-4 h-4"></i> SIP & Step-Up
+                </button>
+                <button id="tab-ci" onclick="switchTab('ci')" class="tab-btn inactive-tab flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200">
+                    <i data-lucide="line-chart" class="w-4 h-4"></i> Compound Interest
+                </button>
+                <button id="tab-fire" onclick="switchTab('fire')" class="tab-btn inactive-tab flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200">
+                    <i data-lucide="flame" class="w-4 h-4"></i> Retirement & FIRE
+                </button>
+                <button id="tab-cagr" onclick="switchTab('cagr')" class="tab-btn inactive-tab flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200">
+                    <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Lumpsum & CAGR
+                </button>
+                <button id="tab-rd" onclick="switchTab('rd')" class="tab-btn inactive-tab flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200">
+                    <i data-lucide="target" class="w-4 h-4"></i> RD & Savings Goal
+                </button>
+                <button id="tab-prepay" onclick="switchTab('prepay')" class="tab-btn inactive-tab flex items-center gap-2 px-4 py-2.5 rounded-xl font-medium text-xs sm:text-sm transition-all duration-200">
+                    <i data-lucide="shield-ellipsis" class="w-4 h-4"></i> Loan Prepayment
+                </button>
+            </div>
+        </div>
+
+        <style>
+            .active-tab {
+                background: linear-gradient(135deg, #6366f1, #4f46e5);
+                color: #ffffff;
+                box-shadow: 0 4px 15px rgba(99, 102, 241, 0.35);
+            }
+            .inactive-tab {
+                color: #9ca3af;
+            }
+            .inactive-tab:hover {
+                color: #ffffff;
+                background-color: rgba(255, 255, 255, 0.05);
+            }
+        </style>
+
+        <!-- ==================== FD CALCULATOR SECTION ==================== -->
+        <div id="section-fd" class="space-y-8">
+            
+            <!-- Preset Bank Rates Banner (Only shown for INR currency) -->
+            <div id="fd-bank-presets-banner" class="glass-panel rounded-2xl p-4 sm:p-6 relative overflow-hidden">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-sm font-semibold uppercase tracking-wider text-indigo-400 flex items-center gap-2">
+                            <i data-lucide="zap" class="w-4 h-4"></i> Preset Major Bank Interest Rates
+                        </h2>
+                        <p class="text-xs text-gray-400 mt-1">Select a popular bank to auto-fill current market FD rates for general public or senior citizens.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2" id="fd-presets-container">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main FD Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Left Input Panel -->
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <h2 class="text-lg font-bold text-white flex items-center justify-between">
+                        <span>FD Investment Details</span>
+                        <i data-lucide="sliders" class="w-5 h-5 text-indigo-400"></i>
+                    </h2>
+
+                    <!-- Principal Deposit Amount -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label for="fd-principal" class="text-gray-300">Total Investment Amount</label>
+                            <span class="text-indigo-400 font-bold text-base" id="fd-principal-val">₹1,00,000</span>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="fd-principal" value="100000" min="1000" step="5000" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                        <input type="range" id="fd-principal-range" min="10000" max="10000000" step="10000" value="100000" class="w-full mt-2">
+                    </div>
+
+                    <!-- Interest Rate (% p.a.) -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label for="fd-rate" class="text-gray-300">Interest Rate (% p.a.)</label>
+                            <span class="text-indigo-400 font-bold text-base" id="fd-rate-val">7.25%</span>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="fd-rate" value="7.25" step="0.05" min="1" max="25" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                            <span class="absolute right-3.5 top-3 text-gray-400 font-medium">%</span>
+                        </div>
+                        <input type="range" id="fd-rate-range" min="2" max="15" step="0.05" value="7.25" class="w-full mt-2">
+                    </div>
+
+                    <!-- Senior Citizen Bonus Toggle -->
+                    <div class="flex items-center justify-between p-3.5 bg-indigo-950/40 border border-indigo-500/20 rounded-xl">
+                        <div class="flex items-center gap-3">
+                            <div class="p-2 bg-indigo-500/20 rounded-lg text-indigo-300">
+                                <i data-lucide="user-check" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <p class="text-xs font-semibold text-white">Senior Citizen Bonus (+0.50%)</p>
+                                <p class="text-[11px] text-gray-400">Adds additional interest for ages 60+</p>
+                            </div>
+                        </div>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" id="fd-senior" class="sr-only peer">
+                            <div class="w-11 h-6 bg-slate-700 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-indigo-600"></div>
+                        </label>
+                    </div>
+
+                    <!-- Tenure -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label class="text-gray-300">Investment Tenure</label>
+                            <div class="flex items-center gap-1 bg-slate-900/90 rounded-lg p-0.5 border border-white/10 text-xs">
+                                <button onclick="setFdTenureUnit('years')" id="tenure-unit-years" class="px-2 py-0.5 rounded bg-indigo-600 text-white">Years</button>
+                                <button onclick="setFdTenureUnit('months')" id="tenure-unit-months" class="px-2 py-0.5 rounded text-gray-400">Months</button>
+                                <button onclick="setFdTenureUnit('days')" id="tenure-unit-days" class="px-2 py-0.5 rounded text-gray-400">Days</button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-3">
+                            <div class="relative">
+                                <input type="number" id="fd-tenure" value="3" min="1" max="100" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                            </div>
+                            <input type="range" id="fd-tenure-range" min="1" max="30" value="3" class="w-full">
+                        </div>
+                    </div>
+
+                    <!-- Payout Frequency Selection -->
+                    <div class="space-y-2">
+                        <label class="text-sm font-medium text-gray-300">Interest Payout Frequency</label>
+                        <select id="fd-payout-freq" onchange="calculateFD()" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium cursor-pointer">
+                            <option value="maturity" class="bg-slate-900 text-white">Cumulative (On Maturity - Compound Interest)</option>
+                            <option value="monthly" class="bg-slate-900 text-white">Monthly Payout (Non-Cumulative)</option>
+                            <option value="quarterly" class="bg-slate-900 text-white">Quarterly Payout (Non-Cumulative)</option>
+                            <option value="yearly" class="bg-slate-900 text-white">Yearly Payout (Non-Cumulative)</option>
+                        </select>
+                        <p id="payout-desc" class="text-[11px] text-gray-400 italic">Compounded quarterly and paid as lump sum at maturity.</p>
+                    </div>
+
+                </div>
+
+                <!-- Right Summary & Visuals Panel -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- KPI Key Metrics Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-indigo-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Total Principal</p>
+                            <p class="text-xl font-bold text-white mt-1" id="res-fd-principal">₹1,00,000</p>
+                            <span class="text-[10px] text-gray-500">Initial Deposit</span>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-emerald-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Total Interest</p>
+                            <p class="text-xl font-bold text-emerald-400 mt-1" id="res-fd-interest">₹23,825</p>
+                            <span class="text-[10px] text-emerald-500/80" id="res-fd-roi">+23.83% Yield</span>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-purple-500 sm:col-span-2 lg:col-span-1">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider" id="payout-card-label">Maturity Value</p>
+                            <p class="text-xl font-bold text-purple-300 mt-1" id="res-fd-maturity">₹1,23,825</p>
+                            <span class="text-[10px] text-purple-400" id="res-fd-periodic-note">Lump Sum at End</span>
+                        </div>
+                    </div>
+
+                    <!-- Periodic Income Callout Box (visible for monthly/quarterly/yearly payouts) -->
+                    <div id="fd-periodic-banner" class="hidden glass-panel rounded-2xl p-5 border border-indigo-500/30 bg-gradient-to-r from-indigo-950/40 to-slate-900/60">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="p-3 bg-emerald-500/20 text-emerald-400 rounded-xl">
+                                    <i data-lucide="coins" class="w-6 h-6"></i>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-semibold text-gray-300" id="periodic-title">Regular Interest Income</p>
+                                    <p class="text-2xl font-extrabold text-emerald-400 mt-0.5" id="res-fd-periodic-amount">₹604 / month</p>
+                                </div>
+                            </div>
+                            <span class="text-xs px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/20">Guaranteed Income</span>
+                        </div>
+                    </div>
+
+                    <!-- Chart & Breakdown Tabs Card -->
+                    <div class="glass-panel rounded-3xl p-6 space-y-4">
+                        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                <i data-lucide="pie-chart" class="w-4 h-4 text-indigo-400"></i> Portfolio Breakup
+                            </h3>
+                            <div class="flex items-center gap-2">
+                                <button onclick="exportFdData()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-gray-300 flex items-center gap-1.5 border border-white/10 transition">
+                                    <i data-lucide="download" class="w-3.5 h-3.5"></i> Export
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Chart Container -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                            <div class="relative h-56 flex items-center justify-center">
+                                <canvas id="fdChart"></canvas>
+                            </div>
+                            <div class="space-y-4 text-xs">
+                                <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center justify-between">
+                                    <span class="flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-indigo-500"></span> Principal Deposit
+                                    </span>
+                                    <span class="font-bold text-white" id="legend-fd-principal">₹1,00,000</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center justify-between">
+                                    <span class="flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-emerald-500"></span> Interest Earnings
+                                    </span>
+                                    <span class="font-bold text-emerald-400" id="legend-fd-interest">₹23,825</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-900/40 border border-white/5 space-y-1">
+                                    <span class="text-gray-400 font-medium">Compounding Note:</span>
+                                    <p class="text-[11px] text-gray-500 leading-relaxed" id="compounding-explanation">
+                                        Cumulative FDs compound interest quarterly, providing higher effective returns over standard simple interest.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Growth Schedule Table -->
+                    <div class="glass-panel rounded-3xl p-6 space-y-4">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                <i data-lucide="table" class="w-4 h-4 text-indigo-400"></i> Yearly Growth Breakdown
+                            </h3>
+                            <span class="text-xs text-gray-400" id="schedule-subtitle">Breakdown over time</span>
+                        </div>
+                        
+                        <div class="overflow-x-auto max-h-64 overflow-y-auto rounded-xl border border-white/10">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-900/90 text-gray-300 sticky top-0 uppercase tracking-wider font-semibold border-b border-white/10">
+                                    <tr>
+                                        <th class="p-3">Period</th>
+                                        <th class="p-3">Opening Balance</th>
+                                        <th class="p-3">Interest Earned</th>
+                                        <th class="p-3">Closing Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="fd-schedule-tbody" class="divide-y divide-white/5 text-gray-300">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== LOAN EMI CALCULATOR SECTION ==================== -->
+        <div id="section-loan" class="hidden space-y-8">
+            
+            <!-- Preset Loan Banks Banner (Only shown for INR currency) -->
+            <div id="loan-bank-presets-banner" class="glass-panel rounded-2xl p-4 sm:p-6 relative overflow-hidden">
+                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="text-sm font-semibold uppercase tracking-wider text-rose-400 flex items-center gap-2">
+                            <i data-lucide="zap" class="w-4 h-4"></i> Preset Bank Loan Rates
+                        </h2>
+                        <p class="text-xs text-gray-400 mt-1">Select a standard loan type from top financial institutions to auto-populate market interest rates.</p>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-2" id="loan-presets-container">
+                        <!-- Populated via JS -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loan Main Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- Left Input Panel -->
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <h2 class="text-lg font-bold text-white flex items-center justify-between">
+                        <span>Loan Details</span>
+                        <i data-lucide="sliders" class="w-5 h-5 text-rose-400"></i>
+                    </h2>
+
+                    <!-- Loan Amount -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label for="loan-amount" class="text-gray-300">Loan Amount</label>
+                            <span class="text-rose-400 font-bold text-base" id="loan-amount-val">₹25,000,00</span>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="loan-amount" value="2500000" min="10000" step="50000" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                        <input type="range" id="loan-amount-range" min="100000" max="20000000" step="50000" value="2500000" class="w-full mt-2">
+                    </div>
+
+                    <!-- Interest Rate (% p.a.) -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label for="loan-rate" class="text-gray-300">Interest Rate (% p.a.)</label>
+                            <span class="text-rose-400 font-bold text-base" id="loan-rate-val">8.75%</span>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="loan-rate" value="8.75" step="0.1" min="1" max="30" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                            <span class="absolute right-3.5 top-3 text-gray-400 font-medium">%</span>
+                        </div>
+                        <input type="range" id="loan-rate-range" min="5" max="24" step="0.1" value="8.75" class="w-full mt-2">
+                    </div>
+
+                    <!-- Loan Tenure -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label class="text-gray-300">Loan Duration</label>
+                            <div class="flex items-center gap-1 bg-slate-900/90 rounded-lg p-0.5 border border-white/10 text-xs">
+                                <button onclick="setLoanTenureUnit('years')" id="loan-unit-years" class="px-2.5 py-0.5 rounded bg-rose-600 text-white">Years</button>
+                                <button onclick="setLoanTenureUnit('months')" id="loan-unit-months" class="px-2.5 py-0.5 rounded text-gray-400">Months</button>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-1 gap-3">
+                            <div class="relative">
+                                <input type="number" id="loan-tenure" value="20" min="1" max="360" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                            </div>
+                            <input type="range" id="loan-tenure-range" min="1" max="30" value="20" class="w-full">
+                        </div>
+                    </div>
+
+                    <!-- Processing Fee (%) -->
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label for="loan-fee-rate" class="text-gray-300">Processing Fee (%)</label>
+                            <span class="text-gray-400 font-medium text-xs" id="loan-fee-amount-disp">₹12,500</span>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="loan-fee-rate" value="0.5" step="0.1" min="0" max="5" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                            <span class="absolute right-3.5 top-3 text-gray-400 font-medium">%</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Loan Output Panel -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- KPI Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="glass-card rounded-2xl p-4 border-l-4 border-l-rose-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Monthly EMI</p>
+                            <p class="text-xl font-extrabold text-rose-400 mt-1" id="res-loan-emi">₹22,093</p>
+                            <span class="text-[10px] text-gray-400">Payable Monthly</span>
+                        </div>
+                        <div class="glass-card rounded-2xl p-4 border-l-4 border-l-amber-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Total Interest</p>
+                            <p class="text-xl font-bold text-amber-300 mt-1" id="res-loan-interest">₹28,02,320</p>
+                            <span class="text-[10px] text-amber-400/80" id="res-loan-interest-ratio">112% of Principal</span>
+                        </div>
+                        <div class="glass-card rounded-2xl p-4 border-l-4 border-l-blue-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Processing Fee</p>
+                            <p class="text-xl font-bold text-blue-300 mt-1" id="res-loan-fee">₹12,500</p>
+                            <span class="text-[10px] text-blue-400">One-time upfront</span>
+                        </div>
+                        <div class="glass-card rounded-2xl p-4 border-l-4 border-l-indigo-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Total Outflow</p>
+                            <p class="text-xl font-bold text-indigo-300 mt-1" id="res-loan-total">₹53,14,820</p>
+                            <span class="text-[10px] text-indigo-400">Principal + Interest + Fee</span>
+                        </div>
+                    </div>
+
+                    <!-- Loan Chart & Visual Breakdown -->
+                    <div class="glass-panel rounded-3xl p-6 space-y-4">
+                        <div class="flex items-center justify-between pb-4 border-b border-white/10">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                <i data-lucide="pie-chart" class="w-4 h-4 text-rose-400"></i> Payment Breakup
+                            </h3>
+                            <button onclick="exportLoanData()" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-medium text-gray-300 flex items-center gap-1.5 border border-white/10 transition">
+                                <i data-lucide="download" class="w-3.5 h-3.5"></i> Export
+                            </button>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                            <div class="relative h-56 flex items-center justify-center">
+                                <canvas id="loanChart"></canvas>
+                            </div>
+                            <div class="space-y-4 text-xs">
+                                <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center justify-between">
+                                    <span class="flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-indigo-500"></span> Principal Loan Amount
+                                    </span>
+                                    <span class="font-bold text-white" id="legend-loan-principal">₹25,00,000</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center justify-between">
+                                    <span class="flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-rose-500"></span> Total Interest Payable
+                                    </span>
+                                    <span class="font-bold text-rose-400" id="legend-loan-interest">₹28,02,320</span>
+                                </div>
+                                <div class="p-3 rounded-xl bg-slate-900/60 border border-white/5 flex items-center justify-between">
+                                    <span class="flex items-center gap-2">
+                                        <span class="w-3 h-3 rounded-full bg-amber-500"></span> Processing Fee
+                                    </span>
+                                    <span class="font-bold text-amber-300" id="legend-loan-fee">₹12,500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Amortization Schedule -->
+                    <div class="glass-panel rounded-3xl p-6 space-y-4">
+                        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                            <h3 class="text-base font-bold text-white flex items-center gap-2">
+                                <i data-lucide="calendar" class="w-4 h-4 text-rose-400"></i> Amortization Schedule
+                            </h3>
+                            <div class="flex items-center gap-2">
+                                <span class="text-xs text-gray-400">View mode:</span>
+                                <button onclick="setAmortizationView('yearly')" id="amort-view-yearly" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-rose-600 text-white">Yearly</button>
+                                <button onclick="setAmortizationView('monthly')" id="amort-view-monthly" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-800 text-gray-400 hover:text-white">Monthly</button>
+                            </div>
+                        </div>
+
+                        <div class="overflow-x-auto max-h-72 overflow-y-auto rounded-xl border border-white/10">
+                            <table class="w-full text-left text-xs">
+                                <thead class="bg-slate-900/90 text-gray-300 sticky top-0 uppercase tracking-wider font-semibold border-b border-white/10">
+                                    <tr>
+                                        <th class="p-3">#</th>
+                                        <th class="p-3">Payment (EMI)</th>
+                                        <th class="p-3">Principal Paid</th>
+                                        <th class="p-3">Interest Paid</th>
+                                        <th class="p-3">Remaining Balance</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="loan-schedule-tbody" class="divide-y divide-white/5 text-gray-300">
+                                    <!-- Populated dynamically -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== SIP & STEP-UP CALCULATOR ==================== -->
+        <div id="section-sip" class="hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <h2 class="text-lg font-bold text-white flex items-center justify-between">
+                        <span>SIP & Step-Up Details</span>
+                        <i data-lucide="trending-up" class="w-5 h-5 text-emerald-400"></i>
+                    </h2>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label for="sip-monthly" class="text-gray-300">Monthly Investment</label>
+                            <span class="text-emerald-400 font-bold text-base" id="sip-monthly-val">₹5,000</span>
+                        </div>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="sip-monthly" value="5000" min="500" step="500" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label for="sip-rate" class="text-gray-300">Expected Annual Return Rate (%)</label>
+                            <span class="text-emerald-400 font-bold text-base" id="sip-rate-val">12.0%</span>
+                        </div>
+                        <div class="relative">
+                            <input type="number" id="sip-rate" value="12" step="0.5" min="1" max="30" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                            <span class="absolute right-3.5 top-3 text-gray-400 font-medium">%</span>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label for="sip-tenure" class="text-gray-300">Investment Tenure (Years)</label>
+                            <span class="text-emerald-400 font-bold text-base" id="sip-tenure-val">10 Yrs</span>
+                        </div>
+                        <input type="number" id="sip-tenure" value="10" min="1" max="40" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                    </div>
+                    <div class="space-y-2">
+                        <div class="flex justify-between items-center text-sm font-medium">
+                            <label for="sip-stepup" class="text-gray-300">Annual Step-Up Increment (%)</label>
+                            <span class="text-indigo-400 font-bold text-base" id="sip-stepup-val">10% / year</span>
+                        </div>
+                        <input type="number" id="sip-stepup" value="10" min="0" max="50" step="1" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                        <p class="text-[11px] text-gray-400">Increases your monthly SIP contribution every year as your income grows.</p>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-indigo-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Total Invested</p>
+                            <p class="text-xl font-bold text-white mt-1" id="res-sip-invested">₹9,56,244</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-emerald-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Est. Returns</p>
+                            <p class="text-xl font-bold text-emerald-400 mt-1" id="res-sip-returns">₹8,71,320</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-purple-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase tracking-wider">Total Value</p>
+                            <p class="text-xl font-bold text-purple-300 mt-1" id="res-sip-total">₹18,27,564</p>
+                        </div>
+                    </div>
+
+                    <div class="glass-panel rounded-3xl p-6">
+                        <div class="relative h-64 flex items-center justify-center">
+                            <canvas id="sipChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== COMPOUND INTEREST CALCULATOR ==================== -->
+        <div id="section-ci" class="hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <h2 class="text-lg font-bold text-white flex items-center justify-between">
+                        <span>Compound Growth Details</span>
+                        <i data-lucide="line-chart" class="w-5 h-5 text-indigo-400"></i>
+                    </h2>
+                    <div class="space-y-2">
+                        <label for="ci-principal" class="text-sm font-medium text-gray-300">Initial Deposit</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="ci-principal" value="50000" min="1000" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="ci-rate" class="text-sm font-medium text-gray-300">Interest Rate (% p.a.)</label>
+                        <input type="number" id="ci-rate" value="8.5" step="0.1" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="ci-tenure" class="text-sm font-medium text-gray-300">Tenure (Years)</label>
+                        <input type="number" id="ci-tenure" value="5" min="1" max="50" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="ci-freq" class="text-sm font-medium text-gray-300">Compounding Frequency</label>
+                        <select id="ci-freq" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                            <option value="12" class="bg-slate-900 text-white">Monthly</option>
+                            <option value="4" class="bg-slate-900 text-white">Quarterly</option>
+                            <option value="2" class="bg-slate-900 text-white">Half-Yearly</option>
+                            <option value="1" class="bg-slate-900 text-white">Annually</option>
+                            <option value="365" class="bg-slate-900 text-white">Daily</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-indigo-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase">Principal</p>
+                            <p class="text-xl font-bold text-white mt-1" id="res-ci-principal">₹50,000</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-emerald-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase">Total Interest</p>
+                            <p class="text-xl font-bold text-emerald-400 mt-1" id="res-ci-interest">₹26,347</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-purple-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase">Final Amount</p>
+                            <p class="text-xl font-bold text-purple-300 mt-1" id="res-ci-total">₹76,347</p>
+                        </div>
+                    </div>
+                    <div class="glass-panel rounded-3xl p-6">
+                        <div class="relative h-64 flex items-center justify-center">
+                            <canvas id="ciChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== RETIREMENT & FIRE PLANNER ==================== -->
+        <div id="section-fire" class="hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <h2 class="text-lg font-bold text-white flex items-center justify-between">
+                        <span>FIRE Parameters</span>
+                        <i data-lucide="flame" class="w-5 h-5 text-amber-400"></i>
+                    </h2>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="fire-curr-age" class="text-xs text-gray-300">Current Age</label>
+                            <input type="number" id="fire-curr-age" value="30" class="glass-input w-full px-3 py-2 rounded-xl text-sm font-medium">
+                        </div>
+                        <div>
+                            <label for="fire-ret-age" class="text-xs text-gray-300">Retirement Age</label>
+                            <input type="number" id="fire-ret-age" value="55" class="glass-input w-full px-3 py-2 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="fire-expenses" class="text-sm font-medium text-gray-300">Current Monthly Expenses</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="fire-expenses" value="40000" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="fire-inflation" class="text-xs text-gray-300">Inflation Rate (%)</label>
+                            <input type="number" id="fire-inflation" value="6" step="0.5" class="glass-input w-full px-3 py-2 rounded-xl text-sm font-medium">
+                        </div>
+                        <div>
+                            <label for="fire-roi" class="text-xs text-gray-300">Pre-Ret. Return (%)</label>
+                            <input type="number" id="fire-roi" value="11" step="0.5" class="glass-input w-full px-3 py-2 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-amber-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase">Retirement Corpus Required</p>
+                            <p class="text-xl font-bold text-amber-300 mt-1" id="res-fire-corpus">₹4.2 Cr</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-indigo-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase">Future Monthly Expense</p>
+                            <p class="text-xl font-bold text-white mt-1" id="res-fire-future-exp">₹1,71,675</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-emerald-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase">Required Monthly SIP</p>
+                            <p class="text-xl font-bold text-emerald-400 mt-1" id="res-fire-sip">₹24,800 / mo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== LUMPSUM & CAGR CALCULATOR ==================== -->
+        <div id="section-cagr" class="hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <h2 class="text-lg font-bold text-white flex items-center justify-between">
+                        <span>CAGR & Return Rate</span>
+                        <i data-lucide="bar-chart-3" class="w-5 h-5 text-purple-400"></i>
+                    </h2>
+                    <div class="space-y-2">
+                        <label for="cagr-initial" class="text-sm font-medium text-gray-300">Initial Amount</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="cagr-initial" value="100000" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="cagr-final" class="text-sm font-medium text-gray-300">Final / Target Amount</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="cagr-final" value="250000" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="cagr-years" class="text-sm font-medium text-gray-300">Duration (Years)</label>
+                        <input type="number" id="cagr-years" value="5" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="glass-card rounded-2xl p-6 border-l-4 border-l-purple-500">
+                        <p class="text-xs text-gray-400 font-medium uppercase">Compound Annual Growth Rate (CAGR)</p>
+                        <p class="text-3xl font-extrabold text-purple-300 mt-2" id="res-cagr-val">20.11% p.a.</p>
+                        <p class="text-xs text-gray-400 mt-2" id="res-cagr-desc">Your investment grew by 2.5x over 5 years.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== RD & SAVINGS GOAL CALCULATOR ==================== -->
+        <div id="section-rd" class="hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <h2 class="text-lg font-bold text-white flex items-center justify-between">
+                        <span>Recurring Deposit</span>
+                        <i data-lucide="target" class="w-5 h-5 text-indigo-400"></i>
+                    </h2>
+                    <div class="space-y-2">
+                        <label for="rd-monthly" class="text-sm font-medium text-gray-300">Monthly Deposit</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="rd-monthly" value="5000" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="rd-rate" class="text-sm font-medium text-gray-300">Interest Rate (% p.a.)</label>
+                        <input type="number" id="rd-rate" value="7.0" step="0.1" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                    </div>
+                    <div class="space-y-2">
+                        <label for="rd-tenure-months" class="text-sm font-medium text-gray-300">Duration (Months)</label>
+                        <input type="number" id="rd-tenure-months" value="36" class="glass-input w-full px-4 py-2.5 rounded-xl text-sm font-medium">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7 space-y-6">
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-indigo-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase">Total Invested</p>
+                            <p class="text-xl font-bold text-white mt-1" id="res-rd-invested">₹1,80,000</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-emerald-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase">Interest Earned</p>
+                            <p class="text-xl font-bold text-emerald-400 mt-1" id="res-rd-interest">₹20,541</p>
+                        </div>
+                        <div class="glass-card rounded-2xl p-5 border-l-4 border-l-purple-500">
+                            <p class="text-xs text-gray-400 font-medium uppercase">Maturity Amount</p>
+                            <p class="text-xl font-bold text-purple-300 mt-1" id="res-rd-total">₹2,00,541</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== LOAN PREPAYMENT SAVER ==================== -->
+        <div id="section-prepay" class="hidden space-y-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                    <h2 class="text-lg font-bold text-white flex items-center justify-between">
+                        <span>Extra Prepayment Details</span>
+                        <i data-lucide="shield-ellipsis" class="w-5 h-5 text-emerald-400"></i>
+                    </h2>
+                    <div class="space-y-2">
+                        <label for="prepay-loan" class="text-sm font-medium text-gray-300">Loan Principal Balance</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="prepay-loan" value="3000000" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label for="prepay-rate" class="text-xs text-gray-300">Interest Rate (%)</label>
+                            <input type="number" id="prepay-rate" value="8.5" step="0.1" class="glass-input w-full px-3 py-2 rounded-xl text-sm font-medium">
+                        </div>
+                        <div>
+                            <label for="prepay-tenure" class="text-xs text-gray-300">Tenure (Years)</label>
+                            <input type="number" id="prepay-tenure" value="20" class="glass-input w-full px-3 py-2 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label for="prepay-extra-monthly" class="text-sm font-medium text-gray-300">Extra Monthly Payment</label>
+                        <div class="relative">
+                            <span class="absolute left-3.5 top-3 text-gray-400 font-medium curr-symbol">₹</span>
+                            <input type="number" id="prepay-extra-monthly" value="3000" class="glass-input w-full pl-8 pr-4 py-2.5 rounded-xl text-sm font-medium">
+                        </div>
+                    </div>
+                </div>
+
+        <!-- ==================== SEO OPTIMIZED CONTENT & FAQ SECTION ==================== -->
+        <section class="mt-16 border-t border-white/10 pt-12 space-y-10">
+            <div class="text-center max-w-3xl mx-auto space-y-3">
+                <h2 class="text-2xl font-extrabold text-white tracking-tight sm:text-3xl">
+                    Smart Financial Calculations Made Simple
+                </h2>
+                <p class="text-sm text-gray-400 leading-relaxed">
+                    Compare bank fixed deposit yields, estimate loan EMIs with amortization schedules, and plan long-term investment wealth with our suite of modern financial calculators.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-indigo-500/20 text-indigo-300 flex items-center justify-center font-bold">
+                        <i data-lucide="piggy-bank" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Bank Fixed Deposit (FD) Yields</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Calculate exact maturity value for quarterly compounding FDs or evaluate predictable monthly and quarterly non-cumulative cash flows. Senior citizens get accurate +0.50% interest bonus calculations.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-300 flex items-center justify-center font-bold">
+                        <i data-lucide="landmark" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white">Loan EMI & Amortization</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Determine exact monthly EMIs for home loans, personal loans, or auto loans. View full payment schedules detailing monthly principal reduction versus interest outflow over 30 years.
+                    </p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-2xl space-y-3 border border-white/5">
+                    <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-300 flex items-center justify-center font-bold">
+                        <i data-lucide="trending-up" class="w-5 h-5"></i>
+                    </div>
+                    <h3 class="text-base font-bold text-white">SIP & Retirement FIRE Planning</h3>
+                    <p class="text-xs text-gray-400 leading-relaxed">
+                        Simulate mutual fund wealth accumulation using annual Step-Up SIP contribution boosts. Calculate your target retirement corpus using inflation-adjusted expense formulas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- SEO FAQ Accordion Section -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 space-y-6">
+                <h3 class="text-lg font-bold text-white flex items-center gap-2">
+                    <i data-lucide="help-circle" class="w-5 h-5 text-indigo-400"></i> Frequently Asked Questions (FAQs)
+                </h3>
+
+                <div class="space-y-4 text-xs sm:text-sm">
+                    <details class="group bg-slate-900/60 rounded-xl p-4 border border-white/5 cursor-pointer">
+                        <summary class="font-semibold text-gray-200 flex justify-between items-center list-none">
+                            <span>How is Fixed Deposit (FD) interest calculated for different payout frequencies?</span>
+                            <span class="transition group-open:rotate-180 text-indigo-400">▼</span>
+                        </summary>
+                        <p class="mt-3 text-gray-400 leading-relaxed border-t border-white/5 pt-3">
+                            For cumulative deposits, interest compounds every quarter (4 times a year) using the compound interest formula: A = P(1 + r/4)^(4t). For monthly, quarterly, or yearly non-cumulative payouts, interest is calculated and paid out as regular income without compounding.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-900/60 rounded-xl p-4 border border-white/5 cursor-pointer">
+                        <summary class="font-semibold text-gray-200 flex justify-between items-center list-none">
+                            <span>How much money can I save by making part-prepayments on a loan?</span>
+                            <span class="transition group-open:rotate-180 text-rose-400">▼</span>
+                        </summary>
+                        <p class="mt-3 text-gray-400 leading-relaxed border-t border-white/5 pt-3">
+                            Making even small extra monthly prepayments reduces your remaining principal balance directly. Because monthly interest is charged on the remaining balance, prepayments shorten your loan tenure and can save thousands in total interest payments over time.
+                        </p>
+                    </details>
+
+                    <details class="group bg-slate-900/60 rounded-xl p-4 border border-white/5 cursor-pointer">
+                        <summary class="font-semibold text-gray-200 flex justify-between items-center list-none">
+                            <span>What is a Step-Up SIP and why is it better than a normal SIP?</span>
+                            <span class="transition group-open:rotate-180 text-emerald-400">▼</span>
+                        </summary>
+                        <p class="mt-3 text-gray-400 leading-relaxed border-t border-white/5 pt-3">
+                            A Step-Up SIP automatically increases your monthly investment amount by a chosen percentage every year (e.g. +10%). This aligns with yearly salary increments and significantly boosts final investment returns compared to keeping your SIP amount fixed.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 py-6 glass-panel mt-12">
+        <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 flex flex-col sm:flex-row justify-between items-center gap-3">
+            <p>© YieldDesk Financial Suite. Interest estimates are indicative based on standard banking formulas.</p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript Logic -->
+    <script>
+        // --- GLOBAL CONSTANTS & APP STATE ---
+        let currentCurrency = '₹';
+        let currentLocale = 'en-IN';
+        let currentIsoCode = 'INR';
+        let activeTab = 'fd';
+
+        let fdTenureUnit = 'years';
+        let loanTenureUnit = 'years';
+        let amortView = 'yearly';
+
+        let fdChartInstance = null;
+        let loanChartInstance = null;
+        let sipChartInstance = null;
+        let ciChartInstance = null;
+
+        // Major Bank Interest Presets (India - INR)
+        const BANK_PRESETS = [
+            { name: "SBI", fdRate: 6.80, fdSrRate: 7.30, homeLoanRate: 8.50 },
+            { name: "HDFC", fdRate: 7.25, fdSrRate: 7.75, homeLoanRate: 8.75 },
+            { name: "ICICI", fdRate: 7.20, fdSrRate: 7.75, homeLoanRate: 8.75 },
+            { name: "Axis", fdRate: 7.25, fdSrRate: 7.75, homeLoanRate: 8.75 },
+            { name: "BOB", fdRate: 7.15, fdSrRate: 7.65, homeLoanRate: 8.40 },
+            { name: "PNB", fdRate: 7.25, fdSrRate: 7.75, homeLoanRate: 8.45 },
+        ];
+
+        // Format Currency Helper
+        function formatCurr(val) {
+            try {
+                return new Intl.NumberFormat(currentLocale, {
+                    style: 'currency',
+                    currency: currentIsoCode,
+                    maximumFractionDigits: 0
+                }).format(val);
+            } catch (e) {
+                return currentCurrency + Math.round(val).toLocaleString();
+            }
+        }
+
+        // Show Toast Notification
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            const toastMsg = document.getElementById('toast-message');
+            if (!toast || !toastMsg) return;
+            toastMsg.innerText = msg;
+            toast.classList.remove('translate-y-[-150%]', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+            setTimeout(() => {
+                toast.classList.remove('translate-y-0', 'opacity-100');
+                toast.classList.add('translate-y-[-150%]', 'opacity-0');
+            }, 2500);
+        }
+
+        // Currency Switcher Logic
+        function setCurrency(valueStr) {
+            const [symbol, code, locale] = valueStr.split('|');
+            currentCurrency = symbol;
+            currentIsoCode = code;
+            currentLocale = locale;
+
+            document.querySelectorAll('.curr-symbol').forEach(el => el.innerText = currentCurrency);
+
+            const fdBanner = document.getElementById('fd-bank-presets-banner');
+            const loanBanner = document.getElementById('loan-bank-presets-banner');
+
+            if (currentIsoCode === 'INR') {
+                fdBanner?.classList.remove('hidden');
+                loanBanner?.classList.remove('hidden');
+            } else {
+                fdBanner?.classList.add('hidden');
+                loanBanner?.classList.add('hidden');
+            }
+
+            recalculateAll();
+            showToast(`Currency changed to ${currentIsoCode} (${currentCurrency})`);
+        }
+
+        function switchTab(tab) {
+            activeTab = tab;
+            const sections = ['fd', 'loan', 'sip', 'ci', 'fire', 'cagr', 'rd', 'prepay'];
+            sections.forEach(s => {
+                const sec = document.getElementById(`section-${s}`);
+                const btn = document.getElementById(`tab-${s}`);
+                if (s === tab) {
+                    sec?.classList.remove('hidden');
+                    btn?.classList.replace('inactive-tab', 'active-tab');
+                } else {
+                    sec?.classList.add('hidden');
+                    btn?.classList.replace('active-tab', 'inactive-tab');
+                }
+            });
+            recalculateAll();
+        }
+
+        function recalculateAll() {
+            calculateFD();
+            calculateLoan();
+            calculateSIP();
+            calculateCI();
+            calculateFIRE();
+            calculateCAGR();
+            calculateRD();
+            calculatePrepayment();
+        }
+
+        function renderPresets() {
+            const fdContainer = document.getElementById('fd-presets-container');
+            const loanContainer = document.getElementById('loan-presets-container');
+
+            if (!fdContainer || !loanContainer) return;
+
+            fdContainer.innerHTML = '';
+            loanContainer.innerHTML = '';
+
+            BANK_PRESETS.forEach(bank => {
+                const fdBtn = document.createElement('button');
+                fdBtn.className = "px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-indigo-600/30 border border-white/10 text-xs font-medium text-gray-300 transition flex items-center gap-1.5";
+                fdBtn.innerHTML = `<span class="font-bold text-white">${bank.name}</span> <span class="text-emerald-400">${bank.fdRate}%</span>`;
+                fdBtn.onclick = () => {
+                    const isSenior = document.getElementById('fd-senior').checked;
+                    const finalRate = isSenior ? bank.fdSrRate : bank.fdRate;
+                    document.getElementById('fd-rate').value = finalRate;
+                    document.getElementById('fd-rate-range').value = finalRate;
+                    calculateFD();
+                };
+                fdContainer.appendChild(fdBtn);
+
+                const loanBtn = document.createElement('button');
+                loanBtn.className = "px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-rose-600/30 border border-white/10 text-xs font-medium text-gray-300 transition flex items-center gap-1.5";
+                loanBtn.innerHTML = `<span class="font-bold text-white">${bank.name}</span> <span class="text-rose-400">${bank.homeLoanRate}%</span>`;
+                loanBtn.onclick = () => {
+                    document.getElementById('loan-rate').value = bank.homeLoanRate;
+                    document.getElementById('loan-rate-range').value = bank.homeLoanRate;
+                    calculateLoan();
+                };
+                loanContainer.appendChild(loanBtn);
+            });
+        }
+
+        // --- FD CALCULATIONS ---
+        function setFdTenureUnit(unit) {
+            fdTenureUnit = unit;
+            ['years', 'months', 'days'].forEach(u => {
+                const btn = document.getElementById(`tenure-unit-${u}`);
+                if (btn) btn.className = u === unit ? "px-2 py-0.5 rounded bg-indigo-600 text-white" : "px-2 py-0.5 rounded text-gray-400";
+            });
+            calculateFD();
+        }
+
+        function calculateFD() {
+            const principal = parseFloat(document.getElementById('fd-principal').value) || 0;
+            let baseRate = parseFloat(document.getElementById('fd-rate').value) || 0;
+            const isSenior = document.getElementById('fd-senior').checked;
+            const tenureVal = parseFloat(document.getElementById('fd-tenure').value) || 0;
+            const payoutFreq = document.getElementById('fd-payout-freq').value;
+
+            const effectiveRate = isSenior ? baseRate + 0.5 : baseRate;
+
+            document.getElementById('fd-principal-val').innerText = formatCurr(principal);
+            document.getElementById('fd-rate-val').innerText = effectiveRate.toFixed(2) + '%';
+
+            let tenureInYears = tenureVal;
+            if (fdTenureUnit === 'months') tenureInYears = tenureVal / 12;
+            if (fdTenureUnit === 'days') tenureInYears = tenureVal / 365;
+
+            let totalInterest = 0;
+            let maturityAmount = 0;
+            let periodicIncome = 0;
+
+            const payoutBanner = document.getElementById('fd-periodic-banner');
+            const payoutCardLabel = document.getElementById('payout-card-label');
+            const payoutNote = document.getElementById('res-fd-periodic-note');
+            const payoutDesc = document.getElementById('payout-desc');
+
+            if (payoutFreq === 'maturity') {
+                maturityAmount = principal * Math.pow(1 + (effectiveRate / 100) / 4, 4 * tenureInYears);
+                totalInterest = maturityAmount - principal;
+                
+                if (payoutBanner) payoutBanner.classList.add('hidden');
+                if (payoutCardLabel) payoutCardLabel.innerText = "Maturity Value";
+                if (payoutNote) payoutNote.innerText = "Lump Sum at End";
+                if (payoutDesc) payoutDesc.innerText = "Compounded quarterly and paid as lump sum at maturity.";
+            } else {
+                if (payoutFreq === 'monthly') {
+                    periodicIncome = (principal * (effectiveRate / 100)) / 12;
+                    totalInterest = periodicIncome * 12 * tenureInYears;
+                    if (document.getElementById('periodic-title')) document.getElementById('periodic-title').innerText = "Regular Monthly Interest Income";
+                    if (document.getElementById('res-fd-periodic-amount')) document.getElementById('res-fd-periodic-amount').innerText = `${formatCurr(periodicIncome)} / month`;
+                    if (payoutDesc) payoutDesc.innerText = "Interest paid directly into your bank account every month.";
+                } else if (payoutFreq === 'quarterly') {
+                    periodicIncome = (principal * (effectiveRate / 100)) / 4;
+                    totalInterest = periodicIncome * 4 * tenureInYears;
+                    if (document.getElementById('periodic-title')) document.getElementById('periodic-title').innerText = "Regular Quarterly Interest Income";
+                    if (document.getElementById('res-fd-periodic-amount')) document.getElementById('res-fd-periodic-amount').innerText = `${formatCurr(periodicIncome)} / quarter`;
+                    if (payoutDesc) payoutDesc.innerText = "Interest paid directly into your bank account every 3 months.";
+                } else if (payoutFreq === 'yearly') {
+                    periodicIncome = (principal * (effectiveRate / 100));
+                    totalInterest = periodicIncome * tenureInYears;
+                    if (document.getElementById('periodic-title')) document.getElementById('periodic-title').innerText = "Regular Annual Interest Income";
+                    if (document.getElementById('res-fd-periodic-amount')) document.getElementById('res-fd-periodic-amount').innerText = `${formatCurr(periodicIncome)} / year`;
+                    if (payoutDesc) payoutDesc.innerText = "Interest paid directly into your bank account once a year.";
+                }
+
+                maturityAmount = principal; // Principal returned intact at end
+                if (payoutBanner) payoutBanner.classList.remove('hidden');
+                if (payoutCardLabel) payoutCardLabel.innerText = "Principal Refund";
+                if (payoutNote) payoutNote.innerText = "Returned at Maturity";
+            }
+
+            document.getElementById('res-fd-principal').innerText = formatCurr(principal);
+            document.getElementById('res-fd-interest').innerText = formatCurr(totalInterest);
+            document.getElementById('res-fd-roi').innerText = `+${((totalInterest / principal) * 100).toFixed(2)}% Yield`;
+            document.getElementById('res-fd-maturity').innerText = formatCurr(maturityAmount);
+
+            renderFdChart(principal, totalInterest);
+            renderFdTable(principal, effectiveRate, tenureInYears, payoutFreq);
+        }
+
+        function renderFdChart(principal, interest) {
+            const ctx = document.getElementById('fdChart')?.getContext('2d');
+            if (!ctx) return;
+            if (fdChartInstance) fdChartInstance.destroy();
+
+            fdChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Principal', 'Interest Earned'],
+                    datasets: [{
+                        data: [principal, interest],
+                        backgroundColor: ['#6366f1', '#10b981'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '72%' }
+            });
+        }
+
+        function renderFdTable(principal, rate, tenureYears, payoutFreq) {
+            const tbody = document.getElementById('fd-schedule-tbody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            const years = Math.max(1, Math.ceil(tenureYears));
+            let openBal = principal;
+
+            for (let i = 1; i <= years; i++) {
+                let closeBal = payoutFreq === 'maturity' ? openBal * Math.pow(1 + (rate / 100) / 4, 4) : openBal;
+                let yearlyInterest = closeBal - openBal;
+
+                const tr = document.createElement('tr');
+                tr.className = "hover:bg-white/5 transition";
+                tr.innerHTML = `
+                    <td class="p-3 font-semibold text-white">Year ${i}</td>
+                    <td class="p-3">${formatCurr(openBal)}</td>
+                    <td class="p-3 text-emerald-400 font-medium">+${formatCurr(yearlyInterest)}</td>
+                    <td class="p-3 font-semibold text-purple-300">${formatCurr(closeBal)}</td>
+                `;
+                tbody.appendChild(tr);
+                openBal = closeBal;
+            }
+        }
+
+        // --- LOAN CALCULATIONS ---
+        function setLoanTenureUnit(unit) {
+            loanTenureUnit = unit;
+            ['years', 'months'].forEach(u => {
+                const btn = document.getElementById(`loan-unit-${u}`);
+                if (btn) btn.className = u === unit ? "px-2.5 py-0.5 rounded bg-rose-600 text-white" : "px-2.5 py-0.5 rounded text-gray-400";
+            });
+            calculateLoan();
+        }
+
+        function setAmortizationView(view) {
+            amortView = view;
+            calculateLoan();
+        }
+
+        function calculateLoan() {
+            const principal = parseFloat(document.getElementById('loan-amount').value) || 0;
+            const rateAnnual = parseFloat(document.getElementById('loan-rate').value) || 0;
+            const tenureVal = parseFloat(document.getElementById('loan-tenure').value) || 0;
+            const feeRate = parseFloat(document.getElementById('loan-fee-rate').value) || 0;
+
+            let totalMonths = loanTenureUnit === 'years' ? tenureVal * 12 : tenureVal;
+            const monthlyRate = rateAnnual / 12 / 100;
+
+            let emi = 0;
+            if (monthlyRate > 0) {
+                emi = (principal * monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+            } else {
+                emi = principal / totalMonths;
+            }
+
+            const totalPayment = emi * totalMonths;
+            const totalInterest = totalPayment - principal;
+            const processingFee = (principal * feeRate) / 100;
+
+            document.getElementById('res-loan-emi').innerText = formatCurr(emi);
+            document.getElementById('res-loan-interest').innerText = formatCurr(totalInterest);
+            document.getElementById('res-loan-fee').innerText = formatCurr(processingFee);
+            document.getElementById('res-loan-total').innerText = formatCurr(totalPayment + processingFee);
+
+            renderLoanChart(principal, totalInterest, processingFee);
+            renderAmortizationSchedule(principal, monthlyRate, totalMonths, emi);
+        }
+
+        function renderLoanChart(principal, interest, fee) {
+            const ctx = document.getElementById('loanChart')?.getContext('2d');
+            if (!ctx) return;
+            if (loanChartInstance) loanChartInstance.destroy();
+
+            loanChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Principal Loan', 'Total Interest', 'Fee'],
+                    datasets: [{
+                        data: [principal, interest, fee],
+                        backgroundColor: ['#6366f1', '#f43f5e', '#f59e0b'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '72%' }
+            });
+        }
+
+        function renderAmortizationSchedule(principal, monthlyRate, totalMonths, emi) {
+            const tbody = document.getElementById('loan-schedule-tbody');
+            if (!tbody) return;
+            tbody.innerHTML = '';
+
+            let balance = principal;
+            for (let m = 1; m <= Math.min(totalMonths, 360); m++) {
+                const interestForMonth = balance * monthlyRate;
+                const principalForMonth = emi - interestForMonth;
+                balance = Math.max(0, balance - principalForMonth);
+
+                if (amortView === 'monthly' || m % 12 === 0) {
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-white/5 transition";
+                    tr.innerHTML = `
+                        <td class="p-3 font-semibold text-white">${amortView === 'monthly' ? 'Month ' + m : 'Year ' + (m/12)}</td>
+                        <td class="p-3 font-medium">${formatCurr(emi)}</td>
+                        <td class="p-3 text-emerald-400">${formatCurr(principalForMonth)}</td>
+                        <td class="p-3 text-rose-400">${formatCurr(interestForMonth)}</td>
+                        <td class="p-3 font-semibold text-gray-300">${formatCurr(balance)}</td>
+                    `;
+                    tbody.appendChild(tr);
+                }
+            }
+        }
+
+        // --- POPULAR CALCULATOR FUNCTIONS ---
+        function calculateSIP() {
+            const monthly = parseFloat(document.getElementById('sip-monthly')?.value) || 0;
+            const rate = parseFloat(document.getElementById('sip-rate')?.value) || 0;
+            const tenure = parseFloat(document.getElementById('sip-tenure')?.value) || 0;
+            const stepUp = parseFloat(document.getElementById('sip-stepup')?.value) || 0;
+
+            let totalInvested = 0;
+            let totalValue = 0;
+            let currentMonthly = monthly;
+            const i = rate / 12 / 100;
+
+            for (let y = 1; y <= tenure; y++) {
+                for (let m = 1; m <= 12; m++) {
+                    totalInvested += currentMonthly;
+                    totalValue = (totalValue + currentMonthly) * (1 + i);
+                }
+                currentMonthly += currentMonthly * (stepUp / 100);
+            }
+
+            const estReturns = totalValue - totalInvested;
+
+            document.getElementById('res-sip-invested').innerText = formatCurr(totalInvested);
+            document.getElementById('res-sip-returns').innerText = formatCurr(estReturns);
+            document.getElementById('res-sip-total').innerText = formatCurr(totalValue);
+
+            renderSipChart(totalInvested, estReturns);
+        }
+
+        function renderSipChart(invested, returns) {
+            const ctx = document.getElementById('sipChart')?.getContext('2d');
+            if (!ctx) return;
+            if (sipChartInstance) sipChartInstance.destroy();
+
+            sipChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Invested Amount', 'Est. Returns'],
+                    datasets: [{
+                        data: [invested, returns],
+                        backgroundColor: ['#6366f1', '#10b981'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
+            });
+        }
+
+        function calculateCI() {
+            const p = parseFloat(document.getElementById('ci-principal')?.value) || 0;
+            const r = parseFloat(document.getElementById('ci-rate')?.value) || 0;
+            const t = parseFloat(document.getElementById('ci-tenure')?.value) || 0;
+            const n = parseFloat(document.getElementById('ci-freq')?.value) || 12;
+
+            const total = p * Math.pow(1 + (r / 100) / n, n * t);
+            const interest = total - p;
+
+            document.getElementById('res-ci-principal').innerText = formatCurr(p);
+            document.getElementById('res-ci-interest').innerText = formatCurr(interest);
+            document.getElementById('res-ci-total').innerText = formatCurr(total);
+
+            renderCiChart(p, interest);
+        }
+
+        function renderCiChart(p, interest) {
+            const ctx = document.getElementById('ciChart')?.getContext('2d');
+            if (!ctx) return;
+            if (ciChartInstance) ciChartInstance.destroy();
+
+            ciChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Principal', 'Interest'],
+                    datasets: [{
+                        data: [p, interest],
+                        backgroundColor: ['#6366f1', '#10b981'],
+                        borderWidth: 0
+                    }]
+                },
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, cutout: '70%' }
+            });
+        }
+
+        function calculateFIRE() {
+            const currAge = parseFloat(document.getElementById('fire-curr-age')?.value) || 30;
+            const retAge = parseFloat(document.getElementById('fire-ret-age')?.value) || 55;
+            const monthlyExp = parseFloat(document.getElementById('fire-expenses')?.value) || 40000;
+            const inf = parseFloat(document.getElementById('fire-inflation')?.value) || 6;
+            const roi = parseFloat(document.getElementById('fire-roi')?.value) || 11;
+
+            const yearsToRetire = Math.max(1, retAge - currAge);
+            const futureMonthlyExp = monthlyExp * Math.pow(1 + inf / 100, yearsToRetire);
+            const futureYearlyExp = futureMonthlyExp * 12;
+
+            const requiredCorpus = futureYearlyExp * 25;
+
+            const r = roi / 12 / 100;
+            const n = yearsToRetire * 12;
+            const sipNeeded = (requiredCorpus * r) / (Math.pow(1 + r, n) - 1);
+
+            document.getElementById('res-fire-corpus').innerText = formatCurr(requiredCorpus);
+            document.getElementById('res-fire-future-exp').innerText = formatCurr(futureMonthlyExp);
+            document.getElementById('res-fire-sip').innerText = `${formatCurr(sipNeeded)} / mo`;
+        }
+
+        function calculateCAGR() {
+            const initial = parseFloat(document.getElementById('cagr-initial')?.value) || 0;
+            const finalVal = parseFloat(document.getElementById('cagr-final')?.value) || 0;
+            const years = parseFloat(document.getElementById('cagr-years')?.value) || 1;
+
+            if (initial > 0 && finalVal > 0 && years > 0) {
+                const cagr = (Math.pow(finalVal / initial, 1 / years) - 1) * 100;
+                document.getElementById('res-cagr-val').innerText = `${cagr.toFixed(2)}% p.a.`;
+                document.getElementById('res-cagr-desc').innerText = `Your investment multiplied by ${(finalVal / initial).toFixed(2)}x in ${years} years.`;
+            }
+        }
+
+        function calculateRD() {
+            const P = parseFloat(document.getElementById('rd-monthly')?.value) || 0;
+            const R = parseFloat(document.getElementById('rd-rate')?.value) || 0;
+            const N = parseFloat(document.getElementById('rd-tenure-months')?.value) || 0;
+
+            let interest = 0;
+            for (let i = 1; i <= N; i++) {
+                interest += (P * (N - i + 1) * (R / 100)) / 12;
+            }
+
+            const totalInvested = P * N;
+            const maturity = totalInvested + interest;
+
+            document.getElementById('res-rd-invested').innerText = formatCurr(totalInvested);
+            document.getElementById('res-rd-interest').innerText = formatCurr(interest);
+            document.getElementById('res-rd-total').innerText = formatCurr(maturity);
+        }
+
+        function calculatePrepayment() {
+            const P = parseFloat(document.getElementById('prepay-loan')?.value) || 0;
+            const rAnnual = parseFloat(document.getElementById('prepay-rate')?.value) || 0;
+            const tenureYears = parseFloat(document.getElementById('prepay-tenure')?.value) || 0;
+            const extraPayment = parseFloat(document.getElementById('prepay-extra-monthly')?.value) || 0;
+
+            const r = rAnnual / 12 / 100;
+            const totalMonths = tenureYears * 12;
+
+            const originalEmi = (P * r * Math.pow(1 + r, totalMonths)) / (Math.pow(1 + r, totalMonths) - 1);
+            const originalTotalInterest = (originalEmi * totalMonths) - P;
+
+            let bal = P;
+            let monthsWithPrepay = 0;
+            let interestWithPrepay = 0;
+
+            while (bal > 0 && monthsWithPrepay < totalMonths) {
+                const interestForMonth = bal * r;
+                const principalForMonth = (originalEmi + extraPayment) - interestForMonth;
+                interestWithPrepay += interestForMonth;
+                bal -= principalForMonth;
+                monthsWithPrepay++;
+            }
+
+            const interestSaved = Math.max(0, originalTotalInterest - interestWithPrepay);
+            const monthsSaved = Math.max(0, totalMonths - monthsWithPrepay);
+
+            const yearsSaved = Math.floor(monthsSaved / 12);
+            const remMonthsSaved = monthsSaved % 12;
+
+            const resInterest = document.getElementById('res-prepay-saved-interest');
+            const resTime = document.getElementById('res-prepay-time-saved');
+            if (resInterest) resInterest.innerText = formatCurr(interestSaved);
+            if (resTime) resTime.innerText = `${yearsSaved} Yrs ${remMonthsSaved} Mos`;
+        }
+
+        function bindDualControl(inputId, rangeId, calcFn) {
+            const input = document.getElementById(inputId);
+            const range = document.getElementById(rangeId);
+
+            if (!input || !range) return;
+
+            input.addEventListener('input', () => { range.value = input.value; calcFn(); });
+            range.addEventListener('input', () => { input.value = range.value; calcFn(); });
+        }
+
+        window.onload = function() {
+            if (window.lucide) lucide.createIcons();
+            renderPresets();
+
+            bindDualControl('fd-principal', 'fd-principal-range', calculateFD);
+            bindDualControl('fd-rate', 'fd-rate-range', calculateFD);
+            bindDualControl('fd-tenure', 'fd-tenure-range', calculateFD);
+
+            bindDualControl('loan-amount', 'loan-amount-range', calculateLoan);
+            bindDualControl('loan-rate', 'loan-rate-range', calculateLoan);
+            bindDualControl('loan-tenure', 'loan-tenure-range', calculateLoan);
+
+            ['sip-monthly', 'sip-rate', 'sip-tenure', 'sip-stepup'].forEach(id => document.getElementById(id)?.addEventListener('input', calculateSIP));
+            ['ci-principal', 'ci-rate', 'ci-tenure', 'ci-freq'].forEach(id => document.getElementById(id)?.addEventListener('input', calculateCI));
+            ['fire-curr-age', 'fire-ret-age', 'fire-expenses', 'fire-inflation', 'fire-roi'].forEach(id => document.getElementById(id)?.addEventListener('input', calculateFIRE));
+            ['cagr-initial', 'cagr-final', 'cagr-years'].forEach(id => document.getElementById(id)?.addEventListener('input', calculateCAGR));
+            ['rd-monthly', 'rd-rate', 'rd-tenure-months'].forEach(id => document.getElementById(id)?.addEventListener('input', calculateRD));
+            ['prepay-loan', 'prepay-rate', 'prepay-tenure', 'prepay-extra-monthly'].forEach(id => document.getElementById(id)?.addEventListener('input', calculatePrepayment));
+
+            recalculateAll();
+        };
+    </script>
+</body>
+</html>
