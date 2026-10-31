@@ -78,8 +78,8 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between text-slate-100">
 
-    <!-- Header Navigation -->
-    <header class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
+    <!-- Header Navigation (Normal flow so it scrolls up naturally with the page) -->
+    <header class="border-b border-slate-800 bg-slate-900/80">
         <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
             <div class="flex items-center space-x-3">
                 <div class="p-2 bg-indigo-600/20 text-indigo-400 rounded-xl border border-indigo-500/30">
@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        <!-- Navigation Tabs (Grid / Wrapped Layout - Restored Full Labels) -->
+        <!-- Navigation Tabs (Grid / Wrapped Layout - Restored Exact Labels from Image) -->
         <div class="max-w-7xl mx-auto px-4 py-3 border-t border-slate-800/60">
             <nav class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 text-xs font-semibold" id="calc-tabs">
                 <button onclick="switchTab('fd')" id="tab-fd" class="w-full py-2.5 px-2 rounded-xl bg-indigo-600 text-white flex items-center justify-center space-x-1.5 transition-all shadow-md"><i data-lucide="piggy-bank" class="w-4 h-4 shrink-0"></i><span class="truncate">Fixed Deposit (FD)</span></button>
@@ -126,10 +126,19 @@
     <!-- Main Dynamic Section -->
     <main class="max-w-7xl mx-auto px-4 py-8 w-full flex-grow">
         
-        <!-- Tab Headline Anchor -->
-        <div class="mb-6">
+        <!-- Tab Headline Anchor & Definition Banner -->
+        <div class="mb-6 space-y-3">
             <h2 id="main-seo-heading" class="text-2xl font-bold text-white">FD Calculator - Fixed Deposit Calculator Online</h2>
             <p id="main-seo-subheading" class="text-sm text-slate-400">Calculate quarterly compounding maturity or regular monthly, quarterly, and yearly payout income.</p>
+            
+            <!-- Dynamic Educational Detail Card -->
+            <div id="tab-info-card" class="p-4 rounded-xl bg-slate-900/80 border border-indigo-500/30 flex items-start space-x-3 text-xs text-slate-300">
+                <i data-lucide="info" class="w-5 h-5 text-indigo-400 shrink-0 mt-0.5"></i>
+                <div id="tab-info-text">
+                    <strong class="text-white text-sm block mb-0.5" id="info-title">Fixed Deposit (FD)</strong>
+                    <span id="info-desc">A Fixed Deposit is a secure investment where you deposit a lump sum for a fixed period at a guaranteed interest rate. Interest can be paid out periodically or compounded at maturity.</span>
+                </div>
+            </div>
         </div>
 
         <!-- 1. FIXED DEPOSIT (FD) TAB -->
@@ -753,20 +762,70 @@
 
             // SEO Dynamic Page Title & Heading Engine
             const seoMap = {
-                'fd': { title: 'FD Calculator - Fixed Deposit Calculator Online & Bank Interest Rates | YieldDesk', heading: 'FD Calculator - Fixed Deposit Calculator Online', sub: 'Calculate quarterly compounding maturity or regular monthly, quarterly, and yearly payout income.' },
-                'loan': { title: 'Loan EMI Calculator - Home, Car & Personal Loan Schedule | YieldDesk', heading: 'Loan EMI Calculator & Repayment Amortization', sub: 'Compute monthly EMI payments, total payable interest, and view detailed schedule tables.' },
-                'sip': { title: 'SIP Calculator - Mutual Fund Systematic Investment & Step-Up | YieldDesk', heading: 'SIP & Step-Up Wealth Calculator', sub: 'Estimate long-term equity mutual fund wealth accumulation with annual step-up growth.' },
-                'ci': { title: 'Compound Interest Calculator - Lumpsum Return Rate | YieldDesk', heading: 'Compound Interest & Lumpsum Calculator', sub: 'Project exponential growth for any investment over custom time horizons.' },
-                'fire': { title: 'FIRE Calculator - Early Retirement & Inflation Planning | YieldDesk', heading: 'FIRE Early Retirement Planner', sub: 'Determine your 25x inflation-adjusted retirement target corpus.' },
-                'cagr': { title: 'CAGR Calculator - Compound Annual Growth Rate | YieldDesk', heading: 'CAGR Return Rate Calculator', sub: 'Calculate compound annual growth rate between initial and final values.' },
-                'rd': { title: 'RD Calculator - Recurring Deposit Interest Calculator | YieldDesk', heading: 'Recurring Deposit (RD) Calculator', sub: 'Calculate maturity returns for monthly recurring bank deposits.' },
-                'prep': { title: 'Loan Prepayment Calculator - Interest Savings & Tenure Reduction | YieldDesk', heading: 'Loan Prepayment Saver Calculator', sub: 'Calculate how extra monthly payments cut down loan interest and tenure.' }
+                'fd': { 
+                    title: 'FD Calculator - Fixed Deposit Calculator Online & Bank Interest Rates | YieldDesk', 
+                    heading: 'FD Calculator - Fixed Deposit Calculator Online', 
+                    sub: 'Calculate quarterly compounding maturity or regular monthly, quarterly, and yearly payout income.',
+                    infoTitle: 'Fixed Deposit (FD) Calculator',
+                    infoDesc: 'FD stands for Fixed Deposit. It is a secure bank investment where you deposit a lump sum of money for a fixed duration at a guaranteed interest rate.'
+                },
+                'loan': { 
+                    title: 'Loan EMI Calculator - Home, Car & Personal Loan Schedule | YieldDesk', 
+                    heading: 'Loan EMI Calculator - Equated Monthly Installment', 
+                    sub: 'Compute monthly EMI payments, total payable interest, and view detailed schedule tables.',
+                    infoTitle: 'Loan EMI Calculator (Equated Monthly Installment)',
+                    infoDesc: 'EMI stands for Equated Monthly Installment. It is the fixed monthly amount paid to repay a home loan, personal loan, or car loan until the balance is fully paid off.'
+                },
+                'sip': { 
+                    title: 'SIP Calculator - Mutual Fund Systematic Investment & Step-Up | YieldDesk', 
+                    heading: 'SIP Calculator - Systematic Investment Plan & Step-Up Growth', 
+                    sub: 'Estimate long-term equity mutual fund wealth accumulation with annual step-up growth.',
+                    infoTitle: 'SIP Calculator (Systematic Investment Plan)',
+                    infoDesc: 'SIP stands for Systematic Investment Plan. It allows you to invest a small fixed amount into mutual funds every month to grow your long-term wealth.'
+                },
+                'ci': { 
+                    title: 'Compound Interest Calculator - Lumpsum Return Rate | YieldDesk', 
+                    heading: 'Compound Interest Calculator - Lumpsum Return & Growth', 
+                    sub: 'Project exponential growth for any investment over custom time horizons.',
+                    infoTitle: 'Compound Interest Calculator',
+                    infoDesc: 'Compound interest is interest earned on both your initial deposit and the interest accumulated over previous periods ("interest on interest").'
+                },
+                'fire': { 
+                    title: 'FIRE Calculator - Early Retirement & Inflation Planning | YieldDesk', 
+                    heading: 'FIRE Calculator - Financial Independence & Early Retirement Planner', 
+                    sub: 'Determine your 25x inflation-adjusted retirement target corpus.',
+                    infoTitle: 'FIRE Calculator (Financial Independence, Retire Early)',
+                    infoDesc: 'FIRE stands for Financial Independence, Retire Early. It calculates the target investment corpus required to live off passive returns without needing a job.'
+                },
+                'cagr': { 
+                    title: 'CAGR Calculator - Compound Annual Growth Rate | YieldDesk', 
+                    heading: 'CAGR Calculator - Compound Annual Growth Rate', 
+                    sub: 'Calculate compound annual growth rate between initial and final values.',
+                    infoTitle: 'CAGR Calculator (Compound Annual Growth Rate)',
+                    infoDesc: 'CAGR stands for Compound Annual Growth Rate. It measures the steady annual rate at which an investment grows from its starting balance to its final balance.'
+                },
+                'rd': { 
+                    title: 'RD Calculator - Recurring Deposit Interest Calculator | YieldDesk', 
+                    heading: 'RD Calculator - Recurring Deposit Maturity Calculator', 
+                    sub: 'Calculate maturity returns for monthly recurring bank deposits.',
+                    infoTitle: 'RD Calculator (Recurring Deposit)',
+                    infoDesc: 'RD stands for Recurring Deposit. Unlike an FD (where you deposit a single lump sum), an RD allows you to deposit a fixed amount every month while earning guaranteed bank interest.'
+                },
+                'prep': { 
+                    title: 'Loan Prepayment Calculator - Interest Savings & Tenure Reduction | YieldDesk', 
+                    heading: 'Loan Prepayment Calculator - Save Loan Interest & Tenure', 
+                    sub: 'Calculate how extra monthly payments cut down loan interest and tenure.',
+                    infoTitle: 'Loan Prepayment Calculator',
+                    infoDesc: 'Prepayment means paying extra money towards your active loan principal balance above your regular EMI, which reduces overall interest cost and shortens loan tenure.'
+                }
             };
 
             if (seoMap[tabId]) {
                 document.title = seoMap[tabId].title;
                 document.getElementById('main-seo-heading').textContent = seoMap[tabId].heading;
                 document.getElementById('main-seo-subheading').textContent = seoMap[tabId].sub;
+                document.getElementById('info-title').textContent = seoMap[tabId].infoTitle;
+                document.getElementById('info-desc').textContent = seoMap[tabId].infoDesc;
             }
 
             calculateActiveTab();
