@@ -1148,39 +1148,58 @@
 
         // Automatic Country & Currency Geolocation Engine
         async function detectUserCurrency() {
+            // First check timezone (100% reliable local check without network calls)
             try {
-                const res = await fetch('https://ipapi.co/json/');
+                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+                if (tz.includes('Asia/Kolkata') || tz.includes('Asia/Calcutta') || tz.includes('Calcutta') || tz.includes('Kolkata')) {
+                    setDetectedCurrency('₹|INR|en-IN');
+                    return;
+                }
+            } catch (e) {}
+
+            // Primary IP Geolocation Check
+            try {
+                const res = await fetch('https://ipapi.co/json/', { timeout: 3000 });
                 if (res.ok) {
                     const data = await res.json();
-                    const country = data.country_code;
-
-                    const map = {
-                        'US': '$|USD|en-US', 'GB': '£|GBP|en-GB', 'CA': 'CA$|CAD|en-CA',
-                        'AU': 'A$|AUD|en-AU', 'AE': 'AED|AED|ar-AE', 'SG': 'S$|SGD|en-SG',
-                        'JP': '¥|JPY|ja-JP', 'IN': '₹|INR|en-IN',
-                        'DE': '€|EUR|de-DE', 'FR': '€|EUR|de-DE', 'IT': '€|EUR|de-DE', 'ES': '€|EUR|de-DE'
-                    };
-
-                    if (map[country]) {
-                        const selectEl = document.getElementById('currency-select');
-                        if (selectEl) {
-                            selectEl.value = map[country];
-                            setCurrency(map[country]);
-                        }
-                        return;
-                    }
+                    if (applyCurrencyByCountry(data.country_code)) return;
                 }
             } catch (err) {
-                console.log('Location IP API unavailable, using browser default locale.');
+                console.log('Primary IP API skipped, trying secondary backup...');
             }
 
-            // Fallback: Browser language settings
+            // Secondary Backup IP API (ip-api.com)
+            try {
+                const res2 = await fetch('http://ip-api.com/json/?fields=countryCode', { timeout: 3000 });
+                if (res2.ok) {
+                    const data2 = await res2.json();
+                    if (applyCurrencyByCountry(data2.countryCode)) return;
+                }
+            } catch (e) {}
+
+            // Fallback: Browser locale check (only if IP and timezone checks fail)
             try {
                 const lang = navigator.language || '';
-                if (lang.includes('en-US')) setDetectedCurrency('$|USD|en-US');
+                if (lang.includes('en-IN') || lang.includes('hi')) setDetectedCurrency('₹|INR|en-IN');
                 else if (lang.includes('en-GB')) setDetectedCurrency('£|GBP|en-GB');
-                else if (lang.includes('de') || lang.includes('fr')) setDetectedCurrency('€|EUR|de-DE');
+                else if (lang.includes('de') || lang.includes('fr') || lang.includes('es')) setDetectedCurrency('€|EUR|de-DE');
+                else if (lang.includes('en-US')) setDetectedCurrency('$|USD|en-US');
             } catch (e) {}
+        }
+
+        function applyCurrencyByCountry(country) {
+            const map = {
+                'IN': '₹|INR|en-IN', 'US': '$|USD|en-US', 'GB': '£|GBP|en-GB', 
+                'CA': 'CA$|CAD|en-CA', 'AU': 'A$|AUD|en-AU', 'AE': 'AED|AED|ar-AE', 
+                'SG': 'S$|SGD|en-SG', 'JP': '¥|JPY|ja-JP', 'DE': '€|EUR|de-DE', 
+                'FR': '€|EUR|de-DE', 'IT': '€|EUR|de-DE', 'ES': '€|EUR|de-DE'
+            };
+
+            if (map[country]) {
+                setDetectedCurrency(map[country]);
+                return true;
+            }
+            return false;
         }
 
         function setDetectedCurrency(val) {
