@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,7 +81,7 @@
     <header class="text-center mt-4 z-20">
         <div class="text-6xl sm:text-7xl my-1 diya-glow inline-block">🪔💥</div>
         <h1 class="ff-font text-4xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-md uppercase tracking-wider">
-            HAPPY DIWALI FREE FIRE MATE! 🔥
+            HAPPY DIWALI FREE FIRE PARTNER! 🔥
         </h1>
         <p class="text-amber-300 text-xs sm:text-sm mt-1 max-w-md mx-auto px-4 font-medium">
             A special Free Fire Rocket & Surprise Gift is waiting for you below! 👇
@@ -95,7 +94,7 @@
             
             <!-- Sender Greeting -->
             <div class="mb-5 bg-gradient-to-r from-red-950/80 via-amber-950/80 to-yellow-950/80 p-3 rounded-2xl border border-yellow-500/40">
-                <p class="text-xs text-amber-400 uppercase tracking-widest font-bold">FF Squad Mate</p>
+                <p class="text-xs text-amber-400 uppercase tracking-widest font-bold">FF SQUAD MATE</p>
                 <h3 id="senderNameDisplay" class="ff-font text-3xl font-bold text-yellow-300 tracking-wide uppercase">"YOUR PRO TEAMMATE"</h3>
                 <p class="text-xs text-slate-300">sent you an exclusive Diwali Air Drop Rocket! 🚀🎁</p>
             </div>
@@ -123,7 +122,7 @@
 
             <!-- Hidden Prank Result Section -->
             <div id="prankResult" class="hidden space-y-5">
-                <!-- Pure HTML/CSS Animated Prank Graphic (No External Broken Image) -->
+                <!-- Pure HTML/CSS Animated Prank Graphic -->
                 <div id="prankMemeContainer" class="rounded-2xl overflow-hidden border-2 border-yellow-500 shadow-2xl bg-gradient-to-b from-zinc-900 to-black p-6 flex flex-col items-center justify-center relative min-h-[180px]">
                     <div class="text-7xl mb-2 animate-bounce">🤪🔥</div>
                     <div class="flex items-center gap-2 text-yellow-400 font-extrabold text-xl">
@@ -171,7 +170,7 @@
             <p class="text-xs text-slate-300">Enter your In-Game Name (IGN) or Name to prank your FF squad!</p>
 
             <div class="mt-4 space-y-3">
-                <input type="text" id="userNameInput" placeholder="Enter your FF Nickname (e.g. OP Killer)" class="w-full px-4 py-3 bg-zinc-800 border border-amber-500/40 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-amber-400 font-medium">
+                <input type="text" id="userNameInput" placeholder="Enter your FF Nickname (e.g. Srikanta FF)" class="w-full px-4 py-3 bg-zinc-800 border border-amber-500/40 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-amber-400 font-medium">
                 
                 <button onclick="generateCustomLink()" class="w-full py-3 bg-gradient-to-r from-amber-500 via-orange-600 to-red-600 hover:from-amber-600 hover:to-red-700 font-extrabold text-white rounded-xl shadow-lg transition tracking-wide">
                     Copy Link & Share on WhatsApp 🚀
@@ -255,12 +254,12 @@
         // Generate Custom Prank Link & Copy
         function generateCustomLink() {
             const nameInput = document.getElementById('userNameInput').value.trim();
-            const name = nameInput ? encodeURIComponent(nameInput) : 'Your FF Teammate';
+            const name = nameInput ? encodeURIComponent(nameInput) : 'Srikanta FF';
             
             const baseUrl = window.location.href.split('?')[0];
             const shareUrl = `${baseUrl}?from=${name}`;
             
-            const whatsappText = `🪔 *HAPPY DIWALI FF BRO!* 🔥✨\nYour FF Teammate (*${nameInput || 'Your Squad Mate'}*) sent you an Exclusive Diwali Air Drop Gift & Rocket! 🚀💥\n\nClick to claim & burst your surprise 👇:\n${shareUrl}`;
+            const whatsappText = `🪔 *HAPPY DIWALI FF BRO!* 🔥✨\nYour Partner (*${nameInput || 'Srikanta FF'}*) sent you an Exclusive Diwali Air Drop Gift & Rocket! 🚀💥\n\nClick to claim & burst your surprise 👇:\n${shareUrl}`;
 
             // Copy link using execCommand fallback
             const tempInput = document.createElement('textarea');
@@ -397,4 +396,3 @@
     </script>
 </body>
 </html>
-```
