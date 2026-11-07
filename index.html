@@ -1,1269 +1,400 @@
+```html
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Primary Dynamic SEO Title & Metadata -->
-    <title>FD Calculator - Fixed Deposit Calculator Online & Bank Interest Rates | YieldDesk Pro</title>
-    <meta name="description" content="Free online Bank FD Interest Calculator & Loan EMI Calculator. Calculate monthly, quarterly, yearly interest payouts, SIP step-up returns, FIRE retirement goals, and compare top bank rates.">
-    <meta name="keywords" content="FD calculator, fixed deposit interest calculator, monthly payout FD calculator, loan EMI calculator, SIP step up calculator, CAGR calculator, RD calculator, FIRE calculator">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://yielddesk.github.io/YieldDesk">
-
-    <!-- Favicon (Browser Tab Icon) -->
-    <link rel="icon" type="image/png" href="https://yielddesk.github.io/YieldDesk/favicon.png" />
-    <link rel="apple-touch-icon" href="https://yielddesk.github.io/YieldDesk/favicon.png" />
-
-    <!-- Open Graph / Social Media SEO -->
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="YieldDesk">
-    <meta property="og:url" content="https://yielddesk.github.io/YieldDesk">
-    <meta property="og:title" content="FD Calculator - Fixed Deposit Calculator Online & Loan EMI Tools">
-    <meta property="og:description" content="Calculate any bank's FD maturity, monthly payout interest, home loan EMI, SIP step-up growth, and FIRE targets instantly.">
-
-    <!-- Tailwind CSS & Chart.js & Lucide Icons -->
+    <title>Free Fire Diwali Special Gift & Surprise Rocket! 💥🎮</title>
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { sans: ['Inter', 'sans-serif'] },
-                    colors: {
-                        brand: { 50: '#eef2ff', 500: '#6366f1', 600: '#4f46e5', 700: '#4338ca' },
-                        darkbg: '#0f172a',
-                        cardbg: 'rgba(30, 41, 59, 0.7)'
-                    }
-                }
-            }
-        }
-    </script>
-
-    <!-- Schema.org JSON-LD for Google Search Rich Snippets -->
-    <script type="application/ld+json">
-    [
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "YieldDesk",
-        "alternateName": ["YieldDesk Pro", "YieldDesk Calculators"],
-        "url": "https://yielddesk.github.io/YieldDesk"
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "WebApplication",
-        "name": "YieldDesk Pro Financial Calculators",
-        "url": "https://yielddesk.github.io/YieldDesk",
-        "applicationCategory": "FinanceApplication",
-        "operatingSystem": "All",
-        "description": "Calculate FD interest payouts, Loan EMIs, SIP growth, and FIRE retirement targets."
-      }
-    ]
-    </script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Teko & Poppins for gaming aesthetic) -->
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@600;700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Canvas Confetti -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: #0b0f19; color: #f8fafc; }
-        .glass { background: rgba(30, 41, 59, 0.75); backdrop-filter: blur(16px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .glass-input { background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.15); color: #fff; }
-        .glass-input:focus { border-color: #6366f1; outline: none; }
-        input[type=range] { -webkit-appearance: none; background: #334155; height: 6px; border-radius: 4px; }
-        input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; height: 18px; width: 18px; border-radius: 50%; background: #6366f1; cursor: pointer; transition: 0.2s; }
-        input[type=range]::-webkit-slider-thumb:hover { transform: scale(1.15); background: #818cf8; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #09090b 0%, #1c0a00 50%, #2b0000 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .ff-font {
+            font-family: 'Teko', sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* Animated Diya & FF Flame Glow */
+        .diya-glow {
+            filter: drop-shadow(0 0 15px #ff6600) drop-shadow(0 0 30px #ff0000);
+            animation: pulse 1.2s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 12px #ff6600) drop-shadow(0 0 25px #ff0000); }
+            100% { transform: scale(1.06); filter: drop-shadow(0 0 25px #ffae00) drop-shadow(0 0 45px #ff0000); }
+        }
+
+        /* Shake animation for prank trigger */
+        .shake-element {
+            animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+        }
+
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-5px, 0, 0); }
+            20%, 80% { transform: translate3d(10px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-10px, 0, 0); }
+            40%, 60% { transform: translate3d(10px, 0, 0); }
+        }
+
+        /* Canvas Overlay */
+        #fireworksCanvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+        /* Flash Jump Effect */
+        .scare-flash {
+            animation: flashBg 0.25s ease-in-out infinite alternate;
+        }
+
+        @keyframes flashBg {
+            0% { background-color: #09090b; }
+            50% { background-color: #991b1b; }
+            100% { background-color: #d97706; }
+        }
     </style>
 </head>
-<body class="min-h-screen flex flex-col justify-between text-slate-100">
+<body class="flex flex-col min-h-screen items-center justify-between p-4 sm:p-6 select-none">
 
-    <!-- Header Navigation (Normal flow so it scrolls up naturally with the page) -->
-    <header class="border-b border-slate-800 bg-slate-900/80">
-        <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap items-center justify-between gap-4">
-            <div class="flex items-center space-x-3">
-                <div class="p-2 bg-indigo-600/20 text-indigo-400 rounded-xl border border-indigo-500/30">
-                    <i data-lucide="calculator" class="w-6 h-6"></i>
-                </div>
-                <div>
-                    <h1 class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-indigo-200 to-indigo-400 bg-clip-text text-transparent">YieldDesk Pro</h1>
-                    <p class="text-xs text-slate-400">All-in-One Global Bank & Wealth Suite</p>
-                </div>
-            </div>
+    <canvas id="fireworksCanvas"></canvas>
 
-            <!-- Currency Auto Selector -->
-            <div class="flex items-center space-x-2">
-                <span class="text-xs text-slate-400 font-medium">Currency:</span>
-                <select id="currency-select" onchange="onCurrencyChange(this.value)" class="glass-input text-xs px-3 py-2 rounded-xl text-slate-100 font-semibold cursor-pointer border border-indigo-500/30 bg-slate-900 focus:ring-2 focus:ring-indigo-500">
-                    <option value="₹|INR|en-IN">₹ INR (India)</option>
-                    <option value="$|USD|en-US">$ USD (USA)</option>
-                    <option value="€|EUR|de-DE">€ EUR (Europe)</option>
-                    <option value="£|GBP|en-GB">£ GBP (UK)</option>
-                    <option value="CA$|CAD|en-CA">CA$ CAD (Canada)</option>
-                    <option value="A$|AUD|en-AU">A$ AUD (Australia)</option>
-                    <option value="S$|SGD|en-SG">S$ SGD (Singapore)</option>
-                    <option value="AED|AED|ar-AE">AED (UAE)</option>
-                    <option value="¥|JPY|ja-JP">¥ JPY (Japan)</option>
-                </select>
-            </div>
-        </div>
-
-        <!-- Navigation Tabs (Grid / Wrapped Layout - Restored Exact Labels from Image) -->
-        <div class="max-w-7xl mx-auto px-4 py-3 border-t border-slate-800/60">
-            <nav class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-2 text-xs font-semibold" id="calc-tabs">
-                <button onclick="switchTab('fd')" id="tab-fd" class="w-full py-2.5 px-2 rounded-xl bg-indigo-600 text-white flex items-center justify-center space-x-1.5 transition-all shadow-md"><i data-lucide="piggy-bank" class="w-4 h-4 shrink-0"></i><span class="truncate">Fixed Deposit (FD)</span></button>
-                <button onclick="switchTab('loan')" id="tab-loan" class="w-full py-2.5 px-2 rounded-xl text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 flex items-center justify-center space-x-1.5 transition-all"><i data-lucide="landmark" class="w-4 h-4 shrink-0"></i><span class="truncate">Loan EMI</span></button>
-                <button onclick="switchTab('sip')" id="tab-sip" class="w-full py-2.5 px-2 rounded-xl text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 flex items-center justify-center space-x-1.5 transition-all"><i data-lucide="trending-up" class="w-4 h-4 shrink-0"></i><span class="truncate">SIP Wealth</span></button>
-                <button onclick="switchTab('ci')" id="tab-ci" class="w-full py-2.5 px-2 rounded-xl text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 flex items-center justify-center space-x-1.5 transition-all"><i data-lucide="percent" class="w-4 h-4 shrink-0"></i><span class="truncate">Compound Interest</span></button>
-                <button onclick="switchTab('fire')" id="tab-fire" class="w-full py-2.5 px-2 rounded-xl text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 flex items-center justify-center space-x-1.5 transition-all"><i data-lucide="flame" class="w-4 h-4 shrink-0"></i><span class="truncate">FIRE Retirement</span></button>
-                <button onclick="switchTab('cagr')" id="tab-cagr" class="w-full py-2.5 px-2 rounded-xl text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 flex items-center justify-center space-x-1.5 transition-all"><i data-lucide="bar-chart-3" class="w-4 h-4 shrink-0"></i><span class="truncate">CAGR Growth</span></button>
-                <button onclick="switchTab('rd')" id="tab-rd" class="w-full py-2.5 px-2 rounded-xl text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 flex items-center justify-center space-x-1.5 transition-all"><i data-lucide="repeat" class="w-4 h-4 shrink-0"></i><span class="truncate">RD Savings</span></button>
-                <button onclick="switchTab('prep')" id="tab-prep" class="w-full py-2.5 px-2 rounded-xl text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 flex items-center justify-center space-x-1.5 transition-all"><i data-lucide="shield-check" class="w-4 h-4 shrink-0"></i><span class="truncate">Loan Prepayment</span></button>
-            </nav>
-        </div>
+    <!-- Header Section -->
+    <header class="text-center mt-4 z-20">
+        <div class="text-6xl sm:text-7xl my-1 diya-glow inline-block">🪔💥</div>
+        <h1 class="ff-font text-4xl sm:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-500 to-red-600 drop-shadow-md uppercase tracking-wider">
+            HAPPY DIWALI FREE FIRE MATE! 🔥
+        </h1>
+        <p class="text-amber-300 text-xs sm:text-sm mt-1 max-w-md mx-auto px-4 font-medium">
+            A special Free Fire Rocket & Surprise Gift is waiting for you below! 👇
+        </p>
     </header>
 
-    <!-- Main Dynamic Section -->
-    <main class="max-w-7xl mx-auto px-4 py-8 w-full flex-grow">
-        
-        <!-- Tab Headline Anchor & Definition Banner -->
-        <div class="mb-6 space-y-3">
-            <h2 id="main-seo-heading" class="text-2xl font-bold text-white">FD Calculator - Fixed Deposit Calculator Online</h2>
-            <p id="main-seo-subheading" class="text-sm text-slate-400">Calculate quarterly compounding maturity or regular monthly, quarterly, and yearly payout income.</p>
+    <!-- Main Interactive Card -->
+    <main class="w-full max-w-md my-auto z-20">
+        <div id="greetingCard" class="bg-black/60 backdrop-blur-md border-2 border-amber-500/50 rounded-3xl p-6 sm:p-8 text-center shadow-[0_0_30px_rgba(245,158,11,0.3)] transition-all duration-500">
             
-            <!-- Dynamic Educational Detail Card -->
-            <div id="tab-info-card" class="p-4 rounded-xl bg-slate-900/80 border border-indigo-500/30 flex items-start space-x-3 text-xs text-slate-300">
-                <i data-lucide="info" class="w-5 h-5 text-indigo-400 shrink-0 mt-0.5"></i>
-                <div id="tab-info-text">
-                    <strong class="text-white text-sm block mb-0.5" id="info-title">Fixed Deposit (FD)</strong>
-                    <span id="info-desc">A Fixed Deposit is a secure investment where you deposit a lump sum for a fixed period at a guaranteed interest rate. Interest can be paid out periodically or compounded at maturity.</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- 1. FIXED DEPOSIT (FD) TAB -->
-        <div id="content-fd" class="tab-content grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 glass rounded-2xl p-6 space-y-6">
-                <!-- Preset Banks (Only visible for INR) -->
-                <div id="bank-presets-container" class="space-y-2">
-                    <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Top Indian Bank Rates Preset</label>
-                    <div class="grid grid-cols-3 sm:grid-cols-6 gap-2" id="bank-preset-buttons"></div>
-                </div>
-
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Total Principal Deposit</span>
-                            <span class="text-indigo-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="fd-principal" class="w-28 glass-input text-right rounded px-1" value="100000"></span>
-                        </div>
-                        <input type="range" id="fd-principal-range" min="10000" max="10000000" step="10000" value="100000" class="w-full">
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Interest Rate (% p.a.)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="fd-rate" class="w-16 glass-input text-right rounded px-1" value="7.1" step="0.1">%</span>
-                            </div>
-                            <input type="range" id="fd-rate-range" min="1" max="15" step="0.1" value="7.1" class="w-full">
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Tenure (Years)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="fd-tenure" class="w-16 glass-input text-right rounded px-1" value="5" step="0.5"> Yrs</span>
-                            </div>
-                            <input type="range" id="fd-tenure-range" min="0.5" max="20" step="0.5" value="5" class="w-full">
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                        <div>
-                            <label class="text-xs text-slate-400 mb-1.5 block font-medium">Interest Payout Frequency</label>
-                            <select id="fd-frequency" onchange="calculateFD()" class="w-full glass-input p-3 rounded-xl text-sm font-semibold bg-slate-900 border border-indigo-500/30 text-slate-100 focus:ring-2 focus:ring-indigo-500 cursor-pointer">
-                                <option value="cumulative" class="bg-slate-900 text-slate-100">At Maturity (Quarterly Compound)</option>
-                                <option value="monthly" class="bg-slate-900 text-slate-100">Monthly Payout Income</option>
-                                <option value="quarterly" class="bg-slate-900 text-slate-100">Quarterly Payout Income</option>
-                                <option value="yearly" class="bg-slate-900 text-slate-100">Yearly Payout Income</option>
-                            </select>
-                        </div>
-                        <div class="flex items-center pt-5">
-                            <label class="flex items-center space-x-2 cursor-pointer bg-slate-800/50 p-2.5 rounded-xl border border-slate-700/60 w-full">
-                                <input type="checkbox" id="fd-senior" onchange="calculateFD()" class="w-4 h-4 rounded text-indigo-600 focus:ring-indigo-500">
-                                <span class="text-xs font-semibold text-amber-300">Senior Citizen (+0.50% Rate)</span>
-                            </label>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Periodic Income Payout Banner (Reveals when monthly/quarterly/yearly is picked) -->
-                <div id="fd-payout-banner" class="hidden p-4 rounded-xl bg-indigo-950/60 border border-indigo-500/30 flex justify-between items-center">
-                    <div>
-                        <div class="text-xs text-indigo-300 font-medium" id="fd-payout-label">Periodic Regular Income</div>
-                        <div class="text-xs text-slate-400">Paid out directly to bank account</div>
-                    </div>
-                    <div class="text-xl font-bold text-emerald-400"><span class="curr-symbol">₹</span><span id="fd-payout-amount">0</span></div>
-                </div>
+            <!-- Sender Greeting -->
+            <div class="mb-5 bg-gradient-to-r from-red-950/80 via-amber-950/80 to-yellow-950/80 p-3 rounded-2xl border border-yellow-500/40">
+                <p class="text-xs text-amber-400 uppercase tracking-widest font-bold">FF Squad Mate</p>
+                <h3 id="senderNameDisplay" class="ff-font text-3xl font-bold text-yellow-300 tracking-wide uppercase">"YOUR PRO TEAMMATE"</h3>
+                <p class="text-xs text-slate-300">sent you an exclusive Diwali Air Drop Rocket! 🚀🎁</p>
             </div>
 
-            <!-- FD Summary & Donut Chart -->
-            <div class="lg:col-span-5 glass rounded-2xl p-6 flex flex-col justify-between space-y-6">
-                <div>
-                    <h3 class="text-base font-semibold text-slate-300 mb-4">FD Investment Breakdown</h3>
-                    <div class="relative w-48 h-48 mx-auto">
-                        <canvas id="fdChart"></canvas>
+            <!-- Diya Graphic & Instructions -->
+            <div id="prankBox" class="space-y-6">
+                <div class="relative w-36 h-36 mx-auto flex items-center justify-center bg-gradient-to-tr from-red-600 via-orange-500 to-yellow-400 rounded-full shadow-[0_0_30px_rgba(255,102,0,0.8)] border-4 border-yellow-300 cursor-pointer transform hover:scale-105 transition duration-300" onclick="triggerPrank()">
+                    <span class="text-7xl animate-bounce">🚀</span>
+                    <div class="absolute -bottom-3 bg-gradient-to-r from-red-600 to-yellow-500 text-black text-xs px-4 py-1 rounded-full font-black shadow-lg uppercase tracking-wider border border-yellow-200">
+                        FF DIWALI ROCKET 💥
                     </div>
                 </div>
 
-                <div class="space-y-3 pt-4 border-t border-slate-800">
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-400">Invested Amount</span>
-                        <span class="font-bold text-white"><span class="curr-symbol">₹</span><span id="fd-res-principal">0</span></span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-400">Total Interest Earned</span>
-                        <span class="font-bold text-emerald-400">+<span class="curr-symbol">₹</span><span id="fd-res-interest">0</span></span>
-                    </div>
-                    <div class="flex justify-between items-center text-lg font-bold border-t border-slate-800 pt-3">
-                        <span class="text-slate-200">Total Return</span>
-                        <span class="text-indigo-400"><span class="curr-symbol">₹</span><span id="fd-res-total">0</span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
+                <p class="text-sm text-yellow-200 font-semibold animate-pulse">
+                    ⚠️ Tap below to ignite the Rocket & unlock your Booyah! 🧨
+                </p>
 
-        <!-- 2. LOAN EMI CALCULATOR TAB -->
-        <div id="content-loan" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 glass rounded-2xl p-6 space-y-6">
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Loan Amount</span>
-                            <span class="text-indigo-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="loan-amount" class="w-28 glass-input text-right rounded px-1" value="2500000"></span>
-                        </div>
-                        <input type="range" id="loan-amount-range" min="100000" max="20000000" step="50000" value="2500000" class="w-full">
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Interest Rate (% p.a.)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="loan-rate" class="w-16 glass-input text-right rounded px-1" value="8.75" step="0.05">%</span>
-                            </div>
-                            <input type="range" id="loan-rate-range" min="4" max="24" step="0.1" value="8.75" class="w-full">
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Tenure (Years)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="loan-tenure" class="w-16 glass-input text-right rounded px-1" value="15"> Yrs</span>
-                            </div>
-                            <input type="range" id="loan-tenure-range" min="1" max="30" step="1" value="15" class="w-full">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Processing Fee (%)</span>
-                            <span class="text-slate-400 font-medium"><input type="number" id="loan-fee" class="w-16 glass-input text-right rounded px-1" value="0.5" step="0.1">%</span>
-                        </div>
-                        <input type="range" id="loan-fee-range" min="0" max="3" step="0.1" value="0.5" class="w-full">
-                    </div>
-                </div>
-
-                <!-- Amortization Schedule Table Toggle -->
-                <div class="pt-4 border-t border-slate-800">
-                    <div class="flex justify-between items-center mb-3">
-                        <h4 class="text-sm font-semibold text-slate-300">Repayment Amortization Schedule</h4>
-                        <div class="flex space-x-1 bg-slate-900 p-1 rounded-lg text-xs">
-                            <button id="amort-yearly-btn" onclick="toggleAmortView('yearly')" class="px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium">Yearly</button>
-                            <button id="amort-monthly-btn" onclick="toggleAmortView('monthly')" class="px-2.5 py-1 rounded-md text-slate-400 hover:text-white">Monthly</button>
-                        </div>
-                    </div>
-                    <div class="max-h-48 overflow-y-auto no-scrollbar rounded-lg border border-slate-800 text-xs">
-                        <table class="w-full text-left border-collapse">
-                            <thead class="bg-slate-900 sticky top-0 text-slate-400 border-b border-slate-800">
-                                <tr>
-                                    <th class="p-2" id="amort-period-header">Year</th>
-                                    <th class="p-2">EMI Paid</th>
-                                    <th class="p-2">Principal</th>
-                                    <th class="p-2">Interest</th>
-                                    <th class="p-2">Balance</th>
-                                </tr>
-                            </thead>
-                            <tbody id="amort-table-body" class="divide-y divide-slate-800/50 text-slate-300"></tbody>
-                        </table>
-                    </div>
-                </div>
+                <!-- Big Prominent Rocket Launch Button -->
+                <button onclick="triggerPrank()" class="w-full py-5 px-6 bg-gradient-to-r from-red-600 via-orange-500 to-yellow-500 hover:from-red-700 hover:to-yellow-600 text-black font-black text-2xl rounded-2xl shadow-[0_0_25px_rgba(255,102,0,0.8)] transform active:scale-95 transition duration-200 flex items-center justify-center gap-3 border-2 border-yellow-200 ff-font tracking-wider uppercase">
+                    <span class="text-3xl animate-pulse">🚀</span>
+                    PRESS HERE TO LAUNCH ROCKET!
+                    <span class="text-3xl animate-pulse">💥</span>
+                </button>
             </div>
 
-            <div class="lg:col-span-5 glass rounded-2xl p-6 flex flex-col justify-between space-y-6">
-                <div>
-                    <h3 class="text-base font-semibold text-slate-300 mb-4">Loan Repayment Summary</h3>
-                    <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/20 text-center mb-4">
-                        <div class="text-xs text-indigo-300 font-medium uppercase">Monthly EMI Payment</div>
-                        <div class="text-2xl font-bold text-white mt-1"><span class="curr-symbol">₹</span><span id="loan-res-emi">0</span></div>
-                    </div>
-                    <div class="relative w-44 h-44 mx-auto">
-                        <canvas id="loanChart"></canvas>
+            <!-- Hidden Prank Result Section -->
+            <div id="prankResult" class="hidden space-y-5">
+                <!-- Pure HTML/CSS Animated Prank Graphic (No External Broken Image) -->
+                <div id="prankMemeContainer" class="rounded-2xl overflow-hidden border-2 border-yellow-500 shadow-2xl bg-gradient-to-b from-zinc-900 to-black p-6 flex flex-col items-center justify-center relative min-h-[180px]">
+                    <div class="text-7xl mb-2 animate-bounce">🤪🔥</div>
+                    <div class="flex items-center gap-2 text-yellow-400 font-extrabold text-xl">
+                        <span>🎮</span><span>BOOYAH PRANKED!</span><span>🎮</span>
                     </div>
                 </div>
 
-                <div class="space-y-3 border-t border-slate-800 pt-3">
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-400">Principal Amount</span>
-                        <span class="font-semibold text-white"><span class="curr-symbol">₹</span><span id="loan-res-principal">0</span></span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-400">Total Payable Interest</span>
-                        <span class="font-semibold text-rose-400">+<span class="curr-symbol">₹</span><span id="loan-res-interest">0</span></span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-400">Est. Processing Fee</span>
-                        <span class="font-semibold text-slate-300"><span class="curr-symbol">₹</span><span id="loan-res-fee">0</span></span>
-                    </div>
-                    <div class="flex justify-between items-center text-base font-bold border-t border-slate-800 pt-2">
-                        <span class="text-slate-200">Total Payable Cost</span>
-                        <span class="text-indigo-400"><span class="curr-symbol">₹</span><span id="loan-res-total">0</span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. SIP & STEP-UP TAB -->
-        <div id="content-sip" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 glass rounded-2xl p-6 space-y-6">
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Monthly Investment</span>
-                            <span class="text-indigo-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="sip-monthly" class="w-24 glass-input text-right rounded px-1" value="10000"></span>
-                        </div>
-                        <input type="range" id="sip-monthly-range" min="500" max="500000" step="500" value="10000" class="w-full">
-                    </div>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Expected Annual Return</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="sip-rate" class="w-16 glass-input text-right rounded px-1" value="12" step="0.5">%</span>
-                            </div>
-                            <input type="range" id="sip-rate-range" min="1" max="30" step="0.5" value="12" class="w-full">
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Tenure (Years)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="sip-tenure" class="w-16 glass-input text-right rounded px-1" value="15"> Yrs</span>
-                            </div>
-                            <input type="range" id="sip-tenure-range" min="1" max="40" step="1" value="15" class="w-full">
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Annual Step-Up (% increase/yr)</span>
-                            <span class="text-emerald-400 font-bold">+<input type="number" id="sip-stepup" class="w-16 glass-input text-right rounded px-1" value="10">%</span>
-                        </div>
-                        <input type="range" id="sip-stepup-range" min="0" max="30" step="1" value="10" class="w-full">
-                    </div>
-                </div>
-            </div>
-
-            <div class="lg:col-span-5 glass rounded-2xl p-6 flex flex-col justify-between space-y-6">
-                <div>
-                    <h3 class="text-base font-semibold text-slate-300 mb-4">SIP Wealth Estimate</h3>
-                    <div class="relative w-44 h-44 mx-auto">
-                        <canvas id="sipChart"></canvas>
-                    </div>
-                </div>
-                <div class="space-y-3 border-t border-slate-800 pt-3">
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-400">Total Invested</span>
-                        <span class="font-semibold text-white"><span class="curr-symbol">₹</span><span id="sip-res-invested">0</span></span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-400">Est. Growth Wealth</span>
-                        <span class="font-semibold text-emerald-400">+<span class="curr-symbol">₹</span><span id="sip-res-returns">0</span></span>
-                    </div>
-                    <div class="flex justify-between items-center text-base font-bold border-t border-slate-800 pt-2">
-                        <span class="text-slate-200">Future Value Corpus</span>
-                        <span class="text-indigo-400"><span class="curr-symbol">₹</span><span id="sip-res-total">0</span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 4. COMPOUND INTEREST TAB -->
-        <div id="content-ci" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 glass rounded-2xl p-6 space-y-6">
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Initial Principal</span>
-                            <span class="text-indigo-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="ci-principal" class="w-28 glass-input text-right rounded px-1" value="500000"></span>
-                        </div>
-                        <input type="range" id="ci-principal-range" min="5000" max="10000000" step="5000" value="500000" class="w-full">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Annual Interest Rate (%)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="ci-rate" class="w-16 glass-input text-right rounded px-1" value="9" step="0.1">%</span>
-                            </div>
-                            <input type="range" id="ci-rate-range" min="1" max="25" step="0.1" value="9" class="w-full">
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Duration (Years)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="ci-tenure" class="w-16 glass-input text-right rounded px-1" value="10"> Yrs</span>
-                            </div>
-                            <input type="range" id="ci-tenure-range" min="1" max="40" step="1" value="10" class="w-full">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="lg:col-span-5 glass rounded-2xl p-6 flex flex-col justify-between space-y-4">
-                <h3 class="text-base font-semibold text-slate-300">Lumpsum Growth Summary</h3>
-                <div class="space-y-3 border-t border-slate-800 pt-3">
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-400">Principal Deposited</span>
-                        <span class="font-semibold text-white"><span class="curr-symbol">₹</span><span id="ci-res-principal">0</span></span>
-                    </div>
-                    <div class="flex justify-between items-center text-sm">
-                        <span class="text-slate-400">Compound Profit</span>
-                        <span class="font-semibold text-emerald-400">+<span class="curr-symbol">₹</span><span id="ci-res-interest">0</span></span>
-                    </div>
-                    <div class="flex justify-between items-center text-base font-bold border-t border-slate-800 pt-2">
-                        <span class="text-slate-200">Maturity Future Value</span>
-                        <span class="text-indigo-400"><span class="curr-symbol">₹</span><span id="ci-res-total">0</span></span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 5. FIRE RETIREMENT TAB -->
-        <div id="content-fire" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 glass rounded-2xl p-6 space-y-6">
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Current Monthly Expense</span>
-                            <span class="text-indigo-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="fire-expense" class="w-24 glass-input text-right rounded px-1" value="50000"></span>
-                        </div>
-                        <input type="range" id="fire-expense-range" min="5000" max="1000000" step="5000" value="50000" class="w-full">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Existing Investments</span>
-                                <span class="text-indigo-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="fire-savings" class="w-24 glass-input text-right rounded px-1" value="1000000"></span>
-                            </div>
-                            <input type="range" id="fire-savings-range" min="0" max="50000000" step="100000" value="1000000" class="w-full">
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Expected ROI (%)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="fire-return" class="w-16 glass-input text-right rounded px-1" value="10" step="0.5">%</span>
-                            </div>
-                            <input type="range" id="fire-return-range" min="4" max="20" step="0.5" value="10" class="w-full">
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Assumed Inflation Rate (%)</span>
-                            <span class="text-rose-400 font-bold"><input type="number" id="fire-inflation" class="w-16 glass-input text-right rounded px-1" value="6" step="0.5">%</span>
-                        </div>
-                        <input type="range" id="fire-inflation-range" min="2" max="12" step="0.5" value="6" class="w-full">
-                    </div>
-                </div>
-            </div>
-            <div class="lg:col-span-5 glass rounded-2xl p-6 flex flex-col justify-between space-y-4">
-                <h3 class="text-base font-semibold text-slate-300">FIRE Target Corpus (25x Rule)</h3>
-                <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/20 text-center">
-                    <div class="text-xs text-indigo-300 font-medium">Required Corpus Target</div>
-                    <div class="text-2xl font-bold text-emerald-400 mt-1"><span class="curr-symbol">₹</span><span id="fire-res-corpus">0</span></div>
-                </div>
-                <div class="text-xs text-slate-400 leading-relaxed">
-                    Based on the standard 4% annual safe withdrawal rule, this corpus will sustain your lifestyle perpetually without depleting your primary principal capital.
-                </div>
-            </div>
-        </div>
-
-        <!-- 6. CAGR TAB -->
-        <div id="content-cagr" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 glass rounded-2xl p-6 space-y-6">
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Initial Investment Value</span>
-                            <span class="text-indigo-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="cagr-initial" class="w-24 glass-input text-right rounded px-1" value="100000"></span>
-                        </div>
-                        <input type="range" id="cagr-initial-range" min="1000" max="10000000" step="5000" value="100000" class="w-full">
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Final Investment Value</span>
-                            <span class="text-emerald-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="cagr-final" class="w-24 glass-input text-right rounded px-1" value="250000"></span>
-                        </div>
-                        <input type="range" id="cagr-final-range" min="1000" max="50000000" step="5000" value="250000" class="w-full">
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Time Period (Years)</span>
-                            <span class="text-indigo-400 font-bold"><input type="number" id="cagr-years" class="w-16 glass-input text-right rounded px-1" value="5"> Yrs</span>
-                        </div>
-                        <input type="range" id="cagr-years-range" min="1" max="30" step="1" value="5" class="w-full">
-                    </div>
-                </div>
-            </div>
-            <div class="lg:col-span-5 glass rounded-2xl p-6 flex flex-col justify-between space-y-4">
-                <h3 class="text-base font-semibold text-slate-300">CAGR Annual Rate</h3>
-                <div class="p-4 rounded-xl bg-indigo-950/40 border border-indigo-500/20 text-center">
-                    <div class="text-xs text-indigo-300 font-medium uppercase">Compound Annual Growth Rate</div>
-                    <div class="text-3xl font-bold text-indigo-400 mt-1"><span id="cagr-res-rate">0</span>%</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 7. RECURRING DEPOSIT (RD) TAB -->
-        <div id="content-rd" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 glass rounded-2xl p-6 space-y-6">
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Monthly Deposit</span>
-                            <span class="text-indigo-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="rd-monthly" class="w-24 glass-input text-right rounded px-1" value="5000"></span>
-                        </div>
-                        <input type="range" id="rd-monthly-range" min="500" max="500000" step="500" value="5000" class="w-full">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Bank Rate (% p.a.)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="rd-rate" class="w-16 glass-input text-right rounded px-1" value="6.8" step="0.1">%</span>
-                            </div>
-                            <input type="range" id="rd-rate-range" min="1" max="15" step="0.1" value="6.8" class="w-full">
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Tenure (Years)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="rd-tenure" class="w-16 glass-input text-right rounded px-1" value="3"> Yrs</span>
-                            </div>
-                            <input type="range" id="rd-tenure-range" min="0.5" max="10" step="0.5" value="3" class="w-full">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="lg:col-span-5 glass rounded-2xl p-6 flex flex-col justify-between space-y-4">
-                <h3 class="text-base font-semibold text-slate-300">RD Investment Return</h3>
-                <div class="space-y-3 border-t border-slate-800 pt-3">
-                    <div class="flex justify-between text-sm"><span class="text-slate-400">Total Deposited</span><span class="font-semibold text-white"><span class="curr-symbol">₹</span><span id="rd-res-principal">0</span></span></div>
-                    <div class="flex justify-between text-sm"><span class="text-slate-400">Total Interest Earned</span><span class="font-semibold text-emerald-400">+<span class="curr-symbol">₹</span><span id="rd-res-interest">0</span></span></div>
-                    <div class="flex justify-between text-base font-bold border-t border-slate-800 pt-2"><span class="text-slate-200">Maturity Value</span><span class="text-indigo-400"><span class="curr-symbol">₹</span><span id="rd-res-total">0</span></span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- 8. LOAN PREPAYMENT TAB -->
-        <div id="content-prep" class="tab-content hidden grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div class="lg:col-span-7 glass rounded-2xl p-6 space-y-6">
-                <div class="space-y-4">
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Current Loan Principal Balance</span>
-                            <span class="text-indigo-400 font-bold"><span class="curr-symbol">₹</span> <input type="number" id="prep-loan" class="w-28 glass-input text-right rounded px-1" value="3000000"></span>
-                        </div>
-                        <input type="range" id="prep-loan-range" min="100000" max="20000000" step="50000" value="3000000" class="w-full">
-                    </div>
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Interest Rate (%)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="prep-rate" class="w-16 glass-input text-right rounded px-1" value="9" step="0.1">%</span>
-                            </div>
-                            <input type="range" id="prep-rate-range" min="4" max="20" step="0.1" value="9" class="w-full">
-                        </div>
-                        <div>
-                            <div class="flex justify-between mb-1 text-sm font-medium">
-                                <span class="text-slate-300">Remaining Tenure (Yrs)</span>
-                                <span class="text-indigo-400 font-bold"><input type="number" id="prep-tenure" class="w-16 glass-input text-right rounded px-1" value="20"> Yrs</span>
-                            </div>
-                            <input type="range" id="prep-tenure-range" min="1" max="30" step="1" value="20" class="w-full">
-                        </div>
-                    </div>
-                    <div>
-                        <div class="flex justify-between mb-1 text-sm font-medium">
-                            <span class="text-slate-300">Extra Monthly Payment</span>
-                            <span class="text-emerald-400 font-bold">+<span class="curr-symbol">₹</span> <input type="number" id="prep-extra" class="w-24 glass-input text-right rounded px-1" value="3000"></span>
-                        </div>
-                        <input type="range" id="prep-extra-range" min="500" max="50000" step="500" value="3000" class="w-full">
-                    </div>
-                </div>
-            </div>
-            <div class="lg:col-span-5 glass rounded-2xl p-6 flex flex-col justify-between space-y-4">
-                <h3 class="text-base font-semibold text-slate-300">Prepayment Savings Summary</h3>
-                <div class="space-y-3 border-t border-slate-800 pt-3">
-                    <div class="flex justify-between text-sm"><span class="text-slate-400">Total Interest Saved</span><span class="font-bold text-emerald-400"><span class="curr-symbol">₹</span><span id="prep-res-saved">0</span></span></div>
-                    <div class="flex justify-between text-sm"><span class="text-slate-400">Tenure Reduced By</span><span class="font-bold text-indigo-400"><span id="prep-res-time">0</span> Months</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- SEO On-Page Content & FAQ Accordion Section for Google Indexing -->
-        <section class="mt-16 border-t border-slate-800 pt-10">
-            <div class="glass rounded-2xl p-8 space-y-8">
-                <div>
-                    <h3 class="text-xl font-bold text-white mb-2">How to Use the All-in-One YieldDesk Financial Calculator</h3>
-                    <p class="text-sm text-slate-400 leading-relaxed">
-                        YieldDesk Pro provides comprehensive tools to compare bank Fixed Deposits (FD), Recurring Deposits (RD), Home Loan EMIs, and wealth-building mutual fund SIP projections. Whether you are calculating non-cumulative monthly interest cash flows or modeling FIRE retirement goals, our algorithms use standard quarterly, monthly, and continuous compounding schedules matching major financial institutions globally.
+                <!-- Custom Prank Message -->
+                <div class="bg-gradient-to-b from-red-950 to-black border-2 border-red-500 p-4 rounded-xl text-center shadow-lg">
+                    <h2 class="ff-font text-3xl font-black text-yellow-400 tracking-wider animate-bounce">
+                        💥 HAPPY DIWALI SQUAD! 🤪
+                    </h2>
+                    <h3 class="ff-font text-4xl sm:text-5xl font-extrabold text-red-500 tracking-widest my-1 drop-shadow-lg">
+                        KHELEGA FREE FIRE? 🎮🔥
+                    </h3>
+                    <p id="prankTextMessage" class="text-xs sm:text-sm text-amber-100 font-medium mt-2">
+                        Forget noise crackers, let's burst helmets in CS-Ranked! Wishing you & your squad a Happy & Joyful Diwali! 🎆
                     </p>
                 </div>
 
-                <div class="space-y-4">
-                    <h4 class="text-lg font-semibold text-indigo-300">Frequently Asked Questions (FAQs)</h4>
-                    
-                    <div class="border border-slate-800 rounded-xl p-4 bg-slate-900/40">
-                        <h5 class="text-sm font-bold text-white">What is the difference between Cumulative and Monthly Payout FD?</h5>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                            In a Cumulative Fixed Deposit, interest is compounded quarterly and paid out together with your initial principal at maturity. In a non-cumulative Monthly or Quarterly payout FD, interest is calculated and transferred directly to your bank account at regular intervals, providing a stable passive income stream.
-                        </p>
-                    </div>
-
-                    <div class="border border-slate-800 rounded-xl p-4 bg-slate-900/40">
-                        <h5 class="text-sm font-bold text-white">How does Step-Up SIP increase long-term wealth?</h5>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                            A Step-Up SIP automatically increases your monthly investment contribution by a fixed percentage (e.g., 10% every year) as your income grows. Over 10-20 years, this small annual bump significantly increases compound capital growth compared to a regular flat SIP.
-                        </p>
-                    </div>
-
-                    <div class="border border-slate-800 rounded-xl p-4 bg-slate-900/40">
-                        <h5 class="text-sm font-bold text-white">How is reducing balance Loan EMI computed?</h5>
-                        <p class="text-xs text-slate-400 mt-1 leading-relaxed">
-                            Loan EMIs use the standard reducing balance formula: <code class="text-indigo-400 font-mono">EMI = [P x R x (1+R)^N]/[(1+R)^N-1]</code>. With each payment, the interest portion decreases while the principal repayment portion increases over time.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Hidden Search Tag Cloud for indexing long-tail searches -->
-                <div class="text-[10px] text-slate-600 space-x-2 pt-4 border-t border-slate-800/80">
-                    <span>Fixed Deposit Rate Calculator</span> • <span>Monthly Payout FD Calculator</span> • <span>Home Loan EMI Schedule</span> • <span>Senior Citizen FD Returns</span> • <span>Step-Up Mutual Fund SIP</span> • <span>FIRE 25x Retirement Corpus</span> • <span>CAGR Return Formula</span> • <span>Loan Prepayment Saver</span>
+                <!-- Action Buttons after Prank -->
+                <div class="flex flex-col gap-2">
+                    <button onclick="openShareModal()" class="w-full py-3 bg-gradient-to-r from-green-600 to-emerald-700 hover:from-green-700 hover:to-emerald-800 text-white font-extrabold rounded-xl shadow-lg transition flex items-center justify-center gap-2 border border-green-400">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i>
+                        Prank FF Squad on WhatsApp! 🚀
+                    </button>
+                    <button onclick="resetPrank()" class="w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 font-semibold rounded-xl text-sm transition border border-slate-600">
+                        🔄 Fire Rocket Again
+                    </button>
                 </div>
             </div>
-        </section>
+
+        </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="border-t border-slate-800 py-6 text-center text-xs text-slate-500 bg-slate-950">
-        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-2">
-            <div>© <span id="year">2026</span> YieldDesk Pro. All financial calculations are for estimation purposes.</div>
-            <div class="flex space-x-4">
-                <a href="#" class="hover:text-slate-300">Privacy Policy</a>
-                <a href="#" class="hover:text-slate-300">Terms of Service</a>
-                <a href="#" class="hover:text-slate-300">Sitemap</a>
+    <!-- Custom Share Modal (Generate Prank Link) -->
+    <div id="shareModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-zinc-900 border-2 border-amber-500/60 w-full max-w-sm rounded-3xl p-6 text-center shadow-2xl relative">
+            <button onclick="closeShareModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <i class="fa-solid fa-xmark text-xl"></i>
+            </button>
+
+            <div class="text-5xl mb-1">🎮🔥</div>
+            <h3 class="ff-font text-3xl font-bold text-amber-400">Create Free Fire Prank Link</h3>
+            <p class="text-xs text-slate-300">Enter your In-Game Name (IGN) or Name to prank your FF squad!</p>
+
+            <div class="mt-4 space-y-3">
+                <input type="text" id="userNameInput" placeholder="Enter your FF Nickname (e.g. OP Killer)" class="w-full px-4 py-3 bg-zinc-800 border border-amber-500/40 rounded-xl text-white placeholder-gray-500 focus:outline-none focus:border-amber-400 font-medium">
+                
+                <button onclick="generateCustomLink()" class="w-full py-3 bg-gradient-to-r from-amber-500 via-orange-600 to-red-600 hover:from-amber-600 hover:to-red-700 font-extrabold text-white rounded-xl shadow-lg transition tracking-wide">
+                    Copy Link & Share on WhatsApp 🚀
+                </button>
+            </div>
+            
+            <div id="copySuccessMsg" class="hidden mt-3 text-xs text-green-400 font-bold">
+                ✅ Prank Link Copied! Opening WhatsApp...
             </div>
         </div>
+    </div>
+
+    <!-- Footer with "Created by SRIKANTA FF" -->
+    <footer class="text-center text-xs text-amber-200/80 my-3 z-20 font-medium tracking-wide">
+        <p>🪔 Happy Diwali & BOOYAH! 🔥 | <span class="text-yellow-400 font-bold">Created by SRIKANTA FF</span></p>
     </footer>
 
-    <!-- Consolidated Execution Script -->
+    <!-- Audio Effects using Web Audio API & External Audio Support -->
     <script>
-        // Global State & Configuration Variables
-        let currentCurrencySymbol = '₹';
-        let currentCurrencyCode = 'INR';
-        let currentLocale = 'en-IN';
-        let activeTab = 'fd';
-        let fdChartInstance = null;
-        let loanChartInstance = null;
-        let sipChartInstance = null;
-        let currentAmortMode = 'yearly';
+        // Custom Audio from MOBCUP
+        const customAudioUrl = 'Https://mobcup.fm/d/hzEljRq0/mp3'; 
+        let externalAudio = null;
+        if (customAudioUrl) {
+            externalAudio = new Audio(customAudioUrl);
+        }
 
-        // Bank Rate Presets (INR Mode)
-        const bankPresets = [
-            { name: 'SBI', rate: 6.8 },
-            { name: 'HDFC', rate: 7.25 },
-            { name: 'ICICI', rate: 7.20 },
-            { name: 'Axis', rate: 7.25 },
-            { name: 'BoB', rate: 7.15 },
-            { name: 'PNB', rate: 7.0 }
-        ];
+        // Set Custom Name from URL parameter
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const senderName = urlParams.get('from');
+            if (senderName) {
+                document.getElementById('senderNameDisplay').innerText = `"${decodeURIComponent(senderName)}"`;
+            }
+            initFireworksCanvas();
+        });
 
-        // Format Currency Helper
-        function formatCurr(val) {
+        // Trigger the Prank Sequence
+        function triggerPrank() {
+            const card = document.getElementById('greetingCard');
+            card.classList.add('shake-element');
+
+            // Screen flash effect
+            document.body.classList.add('scare-flash');
+
+            setTimeout(() => {
+                // Play custom external audio provided via MOBCUP
+                if (externalAudio) {
+                    externalAudio.currentTime = 0;
+                    externalAudio.play().catch(e => console.log('Audio playback error:', e));
+                }
+
+                // Trigger Massive Confetti & Firework explosion
+                triggerMassiveFirework();
+
+                // Show Prank UI
+                document.getElementById('prankBox').classList.add('hidden');
+                document.getElementById('prankResult').classList.remove('hidden');
+
+                // Remove flash effect
+                document.body.classList.remove('scare-flash');
+                card.classList.remove('shake-element');
+            }, 1000);
+        }
+
+        // Reset Prank view
+        function resetPrank() {
+            document.getElementById('prankResult').classList.add('hidden');
+            document.getElementById('prankBox').classList.remove('hidden');
+        }
+
+        // Share Modal Logic
+        function openShareModal() {
+            document.getElementById('shareModal').classList.remove('hidden');
+        }
+
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.add('hidden');
+            document.getElementById('copySuccessMsg').classList.add('hidden');
+        }
+
+        // Generate Custom Prank Link & Copy
+        function generateCustomLink() {
+            const nameInput = document.getElementById('userNameInput').value.trim();
+            const name = nameInput ? encodeURIComponent(nameInput) : 'Your FF Teammate';
+            
+            const baseUrl = window.location.href.split('?')[0];
+            const shareUrl = `${baseUrl}?from=${name}`;
+            
+            const whatsappText = `🪔 *HAPPY DIWALI FF BRO!* 🔥✨\nYour FF Teammate (*${nameInput || 'Your Squad Mate'}*) sent you an Exclusive Diwali Air Drop Gift & Rocket! 🚀💥\n\nClick to claim & burst your surprise 👇:\n${shareUrl}`;
+
+            // Copy link using execCommand fallback
+            const tempInput = document.createElement('textarea');
+            tempInput.value = whatsappText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
             try {
-                return new Intl.NumberFormat(currentLocale, {
-                    maximumFractionDigits: 0
-                }).format(val);
-            } catch(e) {
-                return Math.round(val).toLocaleString();
-            }
-        }
-
-        // Currency Selector Event
-        function onCurrencyChange(valStr) {
-            setCurrency(valStr);
-        }
-
-        function setCurrency(valStr) {
-            const parts = valStr.split('|');
-            currentCurrencySymbol = parts[0];
-            currentCurrencyCode = parts[1];
-            currentLocale = parts[2];
-
-            // Update all currency labels across interface
-            document.querySelectorAll('.curr-symbol').forEach(el => {
-                el.textContent = currentCurrencySymbol;
-            });
-
-            // Toggle Bank Presets Visibility (Only show for INR)
-            const bankContainer = document.getElementById('bank-presets-container');
-            if (bankContainer) {
-                if (currentCurrencyCode === 'INR') {
-                    bankContainer.classList.remove('hidden');
-                } else {
-                    bankContainer.classList.add('hidden');
-                }
-            }
-
-            // Recalculate Active Tab
-            calculateActiveTab();
-        }
-
-        // Render Indian Bank Presets
-        function renderPresets() {
-            const container = document.getElementById('bank-preset-buttons');
-            if (!container) return;
-            container.innerHTML = '';
-
-            bankPresets.forEach(b => {
-                const btn = document.createElement('button');
-                btn.className = "px-2 py-1.5 rounded-lg bg-slate-800 hover:bg-indigo-600 text-xs font-semibold text-slate-300 hover:text-white transition-all text-center border border-slate-700";
-                btn.innerHTML = `<div>${b.name}</div><div class="text-[10px] text-indigo-400 font-normal">${b.rate}%</div>`;
-                btn.onclick = () => {
-                    document.getElementById('fd-rate').value = b.rate;
-                    document.getElementById('fd-rate-range').value = b.rate;
-                    calculateFD();
-                };
-                container.appendChild(btn);
-            });
-        }
-
-        // Navigation & SEO Dynamic Title Switcher
-        function switchTab(tabId) {
-            activeTab = tabId;
-            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-
-            const target = document.getElementById('content-' + tabId);
-            if (target) target.classList.remove('hidden');
-
-            // Update Tab Highlights
-            const navBtns = document.querySelectorAll('#calc-tabs button');
-            navBtns.forEach(btn => {
-                btn.className = "w-full py-2.5 px-3 rounded-xl text-slate-300 hover:text-white bg-slate-800/60 hover:bg-slate-800 border border-slate-700/50 flex items-center justify-center space-x-1.5 transition-all";
-            });
-            const activeBtn = document.getElementById('tab-' + tabId);
-            if (activeBtn) activeBtn.className = "w-full py-2.5 px-3 rounded-xl bg-indigo-600 text-white flex items-center justify-center space-x-1.5 transition-all shadow-md";
-
-            // SEO Dynamic Page Title & Heading Engine
-            const seoMap = {
-                'fd': { 
-                    title: 'FD Calculator - Fixed Deposit Calculator Online & Bank Interest Rates | YieldDesk', 
-                    heading: 'FD Calculator - Fixed Deposit Calculator Online', 
-                    sub: 'Calculate quarterly compounding maturity or regular monthly, quarterly, and yearly payout income.',
-                    infoTitle: 'Fixed Deposit (FD) Calculator',
-                    infoDesc: 'FD stands for Fixed Deposit. It is a secure bank investment where you deposit a lump sum of money for a fixed duration at a guaranteed interest rate.'
-                },
-                'loan': { 
-                    title: 'Loan EMI Calculator - Home, Car & Personal Loan Schedule | YieldDesk', 
-                    heading: 'Loan EMI Calculator - Equated Monthly Installment', 
-                    sub: 'Compute monthly EMI payments, total payable interest, and view detailed schedule tables.',
-                    infoTitle: 'Loan EMI Calculator (Equated Monthly Installment)',
-                    infoDesc: 'EMI stands for Equated Monthly Installment. It is the fixed monthly amount paid to repay a home loan, personal loan, or car loan until the balance is fully paid off.'
-                },
-                'sip': { 
-                    title: 'SIP Calculator - Mutual Fund Systematic Investment & Step-Up | YieldDesk', 
-                    heading: 'SIP Calculator - Systematic Investment Plan & Step-Up Growth', 
-                    sub: 'Estimate long-term equity mutual fund wealth accumulation with annual step-up growth.',
-                    infoTitle: 'SIP Calculator (Systematic Investment Plan)',
-                    infoDesc: 'SIP stands for Systematic Investment Plan. It allows you to invest a small fixed amount into mutual funds every month to grow your long-term wealth.'
-                },
-                'ci': { 
-                    title: 'Compound Interest Calculator - Lumpsum Return Rate | YieldDesk', 
-                    heading: 'Compound Interest Calculator - Lumpsum Return & Growth', 
-                    sub: 'Project exponential growth for any investment over custom time horizons.',
-                    infoTitle: 'Compound Interest Calculator',
-                    infoDesc: 'Compound interest is interest earned on both your initial deposit and the interest accumulated over previous periods ("interest on interest").'
-                },
-                'fire': { 
-                    title: 'FIRE Calculator - Early Retirement & Inflation Planning | YieldDesk', 
-                    heading: 'FIRE Calculator - Financial Independence & Early Retirement Planner', 
-                    sub: 'Determine your 25x inflation-adjusted retirement target corpus.',
-                    infoTitle: 'FIRE Calculator (Financial Independence, Retire Early)',
-                    infoDesc: 'FIRE stands for Financial Independence, Retire Early. It calculates the target investment corpus required to live off passive returns without needing a job.'
-                },
-                'cagr': { 
-                    title: 'CAGR Calculator - Compound Annual Growth Rate | YieldDesk', 
-                    heading: 'CAGR Calculator - Compound Annual Growth Rate', 
-                    sub: 'Calculate compound annual growth rate between initial and final values.',
-                    infoTitle: 'CAGR Calculator (Compound Annual Growth Rate)',
-                    infoDesc: 'CAGR stands for Compound Annual Growth Rate. It measures the steady annual rate at which an investment grows from its starting balance to its final balance.'
-                },
-                'rd': { 
-                    title: 'RD Calculator - Recurring Deposit Interest Calculator | YieldDesk', 
-                    heading: 'RD Calculator - Recurring Deposit Maturity Calculator', 
-                    sub: 'Calculate maturity returns for monthly recurring bank deposits.',
-                    infoTitle: 'RD Calculator (Recurring Deposit)',
-                    infoDesc: 'RD stands for Recurring Deposit. Unlike an FD (where you deposit a single lump sum), an RD allows you to deposit a fixed amount every month while earning guaranteed bank interest.'
-                },
-                'prep': { 
-                    title: 'Loan Prepayment Calculator - Interest Savings & Tenure Reduction | YieldDesk', 
-                    heading: 'Loan Prepayment Calculator - Save Loan Interest & Tenure', 
-                    sub: 'Calculate how extra monthly payments cut down loan interest and tenure.',
-                    infoTitle: 'Loan Prepayment Calculator',
-                    infoDesc: 'Prepayment means paying extra money towards your active loan principal balance above your regular EMI, which reduces overall interest cost and shortens loan tenure.'
-                }
-            };
-
-            if (seoMap[tabId]) {
-                document.title = seoMap[tabId].title;
-                document.getElementById('main-seo-heading').textContent = seoMap[tabId].heading;
-                document.getElementById('main-seo-subheading').textContent = seoMap[tabId].sub;
-                document.getElementById('info-title').textContent = seoMap[tabId].infoTitle;
-                document.getElementById('info-desc').textContent = seoMap[tabId].infoDesc;
-            }
-
-            calculateActiveTab();
-        }
-
-        function calculateActiveTab() {
-            if (activeTab === 'fd') calculateFD();
-            else if (activeTab === 'loan') calculateLoan();
-            else if (activeTab === 'sip') calculateSIP();
-            else if (activeTab === 'ci') calculateCI();
-            else if (activeTab === 'fire') calculateFIRE();
-            else if (activeTab === 'cagr') calculateCAGR();
-            else if (activeTab === 'rd') calculateRD();
-            else if (activeTab === 'prep') calculatePrepayment();
-        }
-
-        // 1. FIXED DEPOSIT (FD) CALCULATOR LOGIC
-        function calculateFD() {
-            const P = parseFloat(document.getElementById('fd-principal').value) || 0;
-            let R = parseFloat(document.getElementById('fd-rate').value) || 0;
-            const T = parseFloat(document.getElementById('fd-tenure').value) || 0;
-            const freq = document.getElementById('fd-frequency').value;
-            const isSenior = document.getElementById('fd-senior').checked;
-
-            if (isSenior) R += 0.50;
-
-            let totalPayout = 0;
-            let totalInterest = 0;
-            let periodicIncome = 0;
-
-            const payoutBanner = document.getElementById('fd-payout-banner');
-            const payoutLabel = document.getElementById('fd-payout-label');
-            const payoutAmount = document.getElementById('fd-payout-amount');
-
-            if (freq === 'cumulative') {
-                if (payoutBanner) payoutBanner.classList.add('hidden');
-                totalPayout = P * Math.pow((1 + (R / 400)), 4 * T);
-                totalInterest = totalPayout - P;
-            } else if (freq === 'monthly') {
-                if (payoutBanner) payoutBanner.classList.remove('hidden');
-                periodicIncome = P * (R / 1200);
-                totalInterest = periodicIncome * (T * 12);
-                totalPayout = P + totalInterest;
-                if (payoutLabel) payoutLabel.textContent = "Monthly Income Payout";
-                if (payoutAmount) payoutAmount.textContent = formatCurr(periodicIncome) + " / mo";
-            } else if (freq === 'quarterly') {
-                if (payoutBanner) payoutBanner.classList.remove('hidden');
-                periodicIncome = P * (R / 400);
-                totalInterest = periodicIncome * (T * 4);
-                totalPayout = P + totalInterest;
-                if (payoutLabel) payoutLabel.textContent = "Quarterly Income Payout";
-                if (payoutAmount) payoutAmount.textContent = formatCurr(periodicIncome) + " / quarter";
-            } else if (freq === 'yearly') {
-                if (payoutBanner) payoutBanner.classList.remove('hidden');
-                periodicIncome = P * (R / 100);
-                totalInterest = periodicIncome * T;
-                totalPayout = P + totalInterest;
-                if (payoutLabel) payoutLabel.textContent = "Yearly Income Payout";
-                if (payoutAmount) payoutAmount.textContent = formatCurr(periodicIncome) + " / year";
-            }
-
-            document.getElementById('fd-res-principal').textContent = formatCurr(P);
-            document.getElementById('fd-res-interest').textContent = formatCurr(totalInterest);
-            document.getElementById('fd-res-total').textContent = formatCurr(totalPayout);
-
-            updatePieChart('fdChart', fdChartInstance, (instance) => { fdChartInstance = instance; }, [P, Math.max(0, totalInterest)], ['Principal', 'Interest Earned'], ['#6366f1', '#10b981']);
-        }
-
-        // 2. LOAN EMI CALCULATOR LOGIC
-        function calculateLoan() {
-            const P = parseFloat(document.getElementById('loan-amount').value) || 0;
-            const R = parseFloat(document.getElementById('loan-rate').value) || 0;
-            const T = parseFloat(document.getElementById('loan-tenure').value) || 0;
-            const feePct = parseFloat(document.getElementById('loan-fee').value) || 0;
-
-            const N = T * 12;
-            const r = R / 1200;
-
-            let emi = 0;
-            if (r > 0) {
-                emi = (P * r * Math.pow(1 + r, N)) / (Math.pow(1 + r, N) - 1);
-            } else {
-                emi = P / N;
-            }
-
-            const totalPayable = emi * N;
-            const totalInterest = totalPayable - P;
-            const procFee = P * (feePct / 100);
-
-            document.getElementById('loan-res-emi').textContent = formatCurr(emi);
-            document.getElementById('loan-res-principal').textContent = formatCurr(P);
-            document.getElementById('loan-res-interest').textContent = formatCurr(totalInterest);
-            document.getElementById('loan-res-fee').textContent = formatCurr(procFee);
-            document.getElementById('loan-res-total').textContent = formatCurr(totalPayable + procFee);
-
-            updatePieChart('loanChart', loanChartInstance, (instance) => { loanChartInstance = instance; }, [P, Math.max(0, totalInterest)], ['Loan Principal', 'Total Interest'], ['#6366f1', '#f43f5e']);
-
-            renderAmortization(P, r, N, emi);
-        }
-
-        function renderAmortization(P, r, N, emi) {
-            const tbody = document.getElementById('amort-table-body');
-            if (!tbody) return;
-            tbody.innerHTML = '';
-
-            let balance = P;
-            let currentYearInterest = 0;
-            let currentYearPrincipal = 0;
-
-            if (currentAmortMode === 'monthly') {
-                for (let m = 1; m <= Math.min(N, 360); m++) {
-                    const interestPayment = balance * r;
-                    const principalPayment = emi - interestPayment;
-                    balance = Math.max(0, balance - principalPayment);
-
-                    const tr = document.createElement('tr');
-                    tr.innerHTML = `<td class="p-2">Mo ${m}</td><td class="p-2">${formatCurr(emi)}</td><td class="p-2">${formatCurr(principalPayment)}</td><td class="p-2 text-rose-400">${formatCurr(interestPayment)}</td><td class="p-2">${formatCurr(balance)}</td>`;
-                    tbody.appendChild(tr);
-                }
-            } else {
-                let yr = 1;
-                for (let m = 1; m <= N; m++) {
-                    const interestPayment = balance * r;
-                    const principalPayment = emi - interestPayment;
-                    balance = Math.max(0, balance - principalPayment);
-
-                    currentYearInterest += interestPayment;
-                    currentYearPrincipal += principalPayment;
-
-                    if (m % 12 === 0 || m === N) {
-                        const tr = document.createElement('tr');
-                        tr.innerHTML = `<td class="p-2">Year ${yr}</td><td class="p-2">${formatCurr(currentYearPrincipal + currentYearInterest)}</td><td class="p-2">${formatCurr(currentYearPrincipal)}</td><td class="p-2 text-rose-400">${formatCurr(currentYearInterest)}</td><td class="p-2">${formatCurr(balance)}</td>`;
-                        tbody.appendChild(tr);
-
-                        yr++;
-                        currentYearInterest = 0;
-                        currentYearPrincipal = 0;
-                    }
-                }
-            }
-        }
-
-        function toggleAmortView(mode) {
-            currentAmortMode = mode;
-            document.getElementById('amort-yearly-btn').className = mode === 'yearly' ? 'px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium' : 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white';
-            document.getElementById('amort-monthly-btn').className = mode === 'monthly' ? 'px-2.5 py-1 rounded-md bg-indigo-600 text-white font-medium' : 'px-2.5 py-1 rounded-md text-slate-400 hover:text-white';
-            document.getElementById('amort-period-header').textContent = mode === 'yearly' ? 'Year' : 'Month';
-            calculateLoan();
-        }
-
-        // 3. SIP & STEP-UP CALCULATOR LOGIC
-        function calculateSIP() {
-            const monthlyInit = parseFloat(document.getElementById('sip-monthly').value) || 0;
-            const rate = parseFloat(document.getElementById('sip-rate').value) || 0;
-            const tenureYrs = parseFloat(document.getElementById('sip-tenure').value) || 0;
-            const stepUpPct = parseFloat(document.getElementById('sip-stepup').value) || 0;
-
-            const i = rate / 1200;
-            const totalMonths = tenureYrs * 12;
-
-            let totalInvested = 0;
-            let futureValue = 0;
-            let currentMonthly = monthlyInit;
-
-            for (let m = 1; m <= totalMonths; m++) {
-                totalInvested += currentMonthly;
-                futureValue = (futureValue + currentMonthly) * (1 + i);
-
-                if (m % 12 === 0 && stepUpPct > 0) {
-                    currentMonthly += currentMonthly * (stepUpPct / 100);
-                }
-            }
-
-            const estReturns = futureValue - totalInvested;
-
-            document.getElementById('sip-res-invested').textContent = formatCurr(totalInvested);
-            document.getElementById('sip-res-returns').textContent = formatCurr(estReturns);
-            document.getElementById('sip-res-total').textContent = formatCurr(futureValue);
-
-            updatePieChart('sipChart', sipChartInstance, (instance) => { sipChartInstance = instance; }, [totalInvested, Math.max(0, estReturns)], ['Invested Amount', 'Est. Returns'], ['#6366f1', '#10b981']);
-        }
-
-        // 4. COMPOUND INTEREST LOGIC
-        function calculateCI() {
-            const P = parseFloat(document.getElementById('ci-principal').value) || 0;
-            const R = parseFloat(document.getElementById('ci-rate').value) || 0;
-            const T = parseFloat(document.getElementById('ci-tenure').value) || 0;
-
-            const total = P * Math.pow((1 + (R / 100)), T);
-            const profit = total - P;
-
-            document.getElementById('ci-res-principal').textContent = formatCurr(P);
-            document.getElementById('ci-res-interest').textContent = formatCurr(profit);
-            document.getElementById('ci-res-total').textContent = formatCurr(total);
-        }
-
-        // 5. FIRE RETIREMENT LOGIC
-        function calculateFIRE() {
-            const monthlyExp = parseFloat(document.getElementById('fire-expense').value) || 0;
-            const annualExp = monthlyExp * 12;
-
-            // Standard 25x FIRE Rule
-            const targetCorpus = annualExp * 25;
-
-            document.getElementById('fire-res-corpus').textContent = formatCurr(targetCorpus);
-        }
-
-        // 6. CAGR LOGIC
-        function calculateCAGR() {
-            const Vinitial = parseFloat(document.getElementById('cagr-initial').value) || 0;
-            const Vfinal = parseFloat(document.getElementById('cagr-final').value) || 0;
-            const Y = parseFloat(document.getElementById('cagr-years').value) || 0;
-
-            let cagr = 0;
-            if (Vinitial > 0 && Y > 0) {
-                cagr = (Math.pow((Vfinal / Vinitial), (1 / Y)) - 1) * 100;
-            }
-
-            document.getElementById('cagr-res-rate').textContent = cagr.toFixed(2);
-        }
-
-        // 7. RECURRING DEPOSIT LOGIC
-        function calculateRD() {
-            const P = parseFloat(document.getElementById('rd-monthly').value) || 0;
-            const R = parseFloat(document.getElementById('rd-rate').value) || 0;
-            const T = parseFloat(document.getElementById('rd-tenure').value) || 0;
-
-            const N = T * 12;
-            const i = R / 1200;
-
-            // Maturity calculation formula for RD
-            let totalMaturity = 0;
-            for (let m = 1; m <= N; m++) {
-                totalMaturity += P * Math.pow(1 + i, N - m + 1);
-            }
-
-            const totalInvested = P * N;
-            const interest = totalMaturity - totalInvested;
-
-            document.getElementById('rd-res-principal').textContent = formatCurr(totalInvested);
-            document.getElementById('rd-res-interest').textContent = formatCurr(interest);
-            document.getElementById('rd-res-total').textContent = formatCurr(totalMaturity);
-        }
-
-        // 8. LOAN PREPAYMENT LOGIC
-        function calculatePrepayment() {
-            const P = parseFloat(document.getElementById('prep-loan').value) || 0;
-            const R = parseFloat(document.getElementById('prep-rate').value) || 0;
-            const T = parseFloat(document.getElementById('prep-tenure').value) || 0;
-            const extra = parseFloat(document.getElementById('prep-extra').value) || 0;
-
-            const r = R / 1200;
-            const N = T * 12;
-
-            const baseEmi = (P * r * Math.pow(1 + r, N)) / (Math.pow(1 + r, N) - 1);
-            const origTotalInterest = (baseEmi * N) - P;
-
-            let balance = P;
-            let monthsWithExtra = 0;
-            let newTotalInterest = 0;
-
-            const newEmi = baseEmi + extra;
-
-            while (balance > 0 && monthsWithExtra < N) {
-                const interest = balance * r;
-                const principal = newEmi - interest;
-                newTotalInterest += interest;
-                balance -= principal;
-                monthsWithExtra++;
-            }
-
-            const interestSaved = Math.max(0, origTotalInterest - newTotalInterest);
-            const monthsReduced = Math.max(0, N - monthsWithExtra);
-
-            document.getElementById('prep-res-saved').textContent = formatCurr(interestSaved);
-            document.getElementById('prep-res-time').textContent = monthsReduced;
-        }
-
-        // Generic Chart.js Helper
-        function updatePieChart(canvasId, existingInstance, setInstanceFn, dataArray, labelsArray, colorsArray) {
-            const canvas = document.getElementById(canvasId);
-            if (!canvas) return;
-            const ctx = canvas.getContext('2d');
-
-            if (existingInstance) existingInstance.destroy();
-
-            const newChart = new Chart(ctx, {
-                type: 'doughnut',
-                data: {
-                    labels: labelsArray,
-                    datasets: [{
-                        data: dataArray,
-                        backgroundColor: colorsArray,
-                        borderWidth: 0,
-                        hoverOffset: 4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: { display: false }
-                    },
-                    cutout: '75%'
-                }
-            });
-
-            setInstanceFn(newChart);
-        }
-
-        // Synchronize Dual Inputs & Sliders
-        function bindDualControl(inputId, rangeId, calcFn) {
-            const input = document.getElementById(inputId);
-            const range = document.getElementById(rangeId);
-            if (!input || !range) return;
-
-            input.addEventListener('input', () => { range.value = input.value; calcFn(); });
-            range.addEventListener('input', () => { input.value = range.value; calcFn(); });
-        }
-
-        // Automatic Country & Currency Geolocation Engine
-        async function detectUserCurrency() {
-            // First check timezone (100% reliable local check without network calls)
-            try {
-                const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
-                if (tz.includes('Asia/Kolkata') || tz.includes('Asia/Calcutta') || tz.includes('Calcutta') || tz.includes('Kolkata')) {
-                    setDetectedCurrency('₹|INR|en-IN');
-                    return;
-                }
-            } catch (e) {}
-
-            // Primary IP Geolocation Check
-            try {
-                const res = await fetch('https://ipapi.co/json/', { timeout: 3000 });
-                if (res.ok) {
-                    const data = await res.json();
-                    if (applyCurrencyByCountry(data.country_code)) return;
-                }
+                document.execCommand('copy');
+                document.getElementById('copySuccessMsg').classList.remove('hidden');
+                
+                // Open WhatsApp after short delay
+                setTimeout(() => {
+                    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappText)}`, '_blank');
+                }, 1000);
             } catch (err) {
-                console.log('Primary IP API skipped, trying secondary backup...');
+                console.error('Copy failed', err);
             }
-
-            // Secondary Backup IP API (ip-api.com)
-            try {
-                const res2 = await fetch('http://ip-api.com/json/?fields=countryCode', { timeout: 3000 });
-                if (res2.ok) {
-                    const data2 = await res2.json();
-                    if (applyCurrencyByCountry(data2.countryCode)) return;
-                }
-            } catch (e) {}
-
-            // Fallback: Browser locale check (only if IP and timezone checks fail)
-            try {
-                const lang = navigator.language || '';
-                if (lang.includes('en-IN') || lang.includes('hi')) setDetectedCurrency('₹|INR|en-IN');
-                else if (lang.includes('en-GB')) setDetectedCurrency('£|GBP|en-GB');
-                else if (lang.includes('de') || lang.includes('fr') || lang.includes('es')) setDetectedCurrency('€|EUR|de-DE');
-                else if (lang.includes('en-US')) setDetectedCurrency('$|USD|en-US');
-            } catch (e) {}
+            document.body.removeChild(tempInput);
         }
 
-        function applyCurrencyByCountry(country) {
-            const map = {
-                'IN': '₹|INR|en-IN', 'US': '$|USD|en-US', 'GB': '£|GBP|en-GB', 
-                'CA': 'CA$|CAD|en-CA', 'AU': 'A$|AUD|en-AU', 'AE': 'AED|AED|ar-AE', 
-                'SG': 'S$|SGD|en-SG', 'JP': '¥|JPY|ja-JP', 'DE': '€|EUR|de-DE', 
-                'FR': '€|EUR|de-DE', 'IT': '€|EUR|de-DE', 'ES': '€|EUR|de-DE'
+        // Firework Effects using Canvas & Confetti Library
+        function triggerMassiveFirework() {
+            const count = 200;
+            const defaults = {
+                origin: { y: 0.6 }
             };
 
-            if (map[country]) {
-                setDetectedCurrency(map[country]);
-                return true;
+            function fire(particleRatio, opts) {
+                confetti(Object.assign({}, defaults, opts, {
+                    particleCount: Math.floor(count * particleRatio)
+                }));
             }
-            return false;
+
+            fire(0.25, {
+                spread: 26,
+                startVelocity: 55,
+                colors: ['#ff0000', '#ffa500', '#ffff00']
+            });
+            fire(0.2, {
+                spread: 60,
+                colors: ['#ffffff', '#ff00ff', '#00ffff']
+            });
+            fire(0.35, {
+                spread: 100,
+                decay: 0.91,
+                scalar: 1.2
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 25,
+                decay: 0.92,
+                colors: ['#e60000', '#ffcc00', '#ffffff']
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 45,
+            });
         }
 
-        function setDetectedCurrency(val) {
-            const selectEl = document.getElementById('currency-select');
-            if (selectEl) {
-                selectEl.value = val;
-                setCurrency(val);
+        // Background Continuous Ambient Fireworks Canvas
+        function initFireworksCanvas() {
+            const canvas = document.getElementById('fireworksCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
             }
+            window.addEventListener('resize', resizeCanvas);
+            resizeCanvas();
+
+            let particles = [];
+
+            class Particle {
+                constructor(x, y, color) {
+                    this.x = x;
+                    this.y = y;
+                    this.color = color;
+                    this.radius = Math.random() * 2 + 1;
+                    this.velocity = {
+                        x: (Math.random() - 0.5) * 4,
+                        y: (Math.random() - 0.5) * 4
+                    };
+                    this.alpha = 1;
+                }
+
+                draw() {
+                    ctx.save();
+                    ctx.globalAlpha = this.alpha;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = this.color;
+                    ctx.fill();
+                    ctx.restore();
+                }
+
+                update() {
+                    this.x += this.velocity.x;
+                    this.y += this.velocity.y;
+                    this.alpha -= 0.015;
+                }
+            }
+
+            function addRandomFirework() {
+                const x = Math.random() * canvas.width;
+                const y = Math.random() * (canvas.height * 0.5);
+                const colors = ['#ff4d4d', '#ffaf40', '#fffa65', '#18dcff', '#7d5fff'];
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                for (let i = 0; i < 30; i++) {
+                    particles.push(new Particle(x, y, color));
+                }
+            }
+
+            setInterval(addRandomFirework, 1500);
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.fillStyle = 'rgba(9, 9, 11, 0.2)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                particles.forEach((particle, index) => {
+                    if (particle.alpha > 0) {
+                        particle.update();
+                        particle.draw();
+                    } else {
+                        particles.splice(index, 1);
+                    }
+                });
+            }
+
+            animate();
         }
-
-        // Single Initialization Trigger
-        window.onload = function() {
-            if (window.lucide) lucide.createIcons();
-            renderPresets();
-
-            detectUserCurrency();
-
-            // Bind Sliders & Inputs
-            bindDualControl('fd-principal', 'fd-principal-range', calculateFD);
-            bindDualControl('fd-rate', 'fd-rate-range', calculateFD);
-            bindDualControl('fd-tenure', 'fd-tenure-range', calculateFD);
-
-            bindDualControl('loan-amount', 'loan-amount-range', calculateLoan);
-            bindDualControl('loan-rate', 'loan-rate-range', calculateLoan);
-            bindDualControl('loan-tenure', 'loan-tenure-range', calculateLoan);
-            bindDualControl('loan-fee', 'loan-fee-range', calculateLoan);
-
-            bindDualControl('sip-monthly', 'sip-monthly-range', calculateSIP);
-            bindDualControl('sip-rate', 'sip-rate-range', calculateSIP);
-            bindDualControl('sip-tenure', 'sip-tenure-range', calculateSIP);
-            bindDualControl('sip-stepup', 'sip-stepup-range', calculateSIP);
-
-            bindDualControl('ci-principal', 'ci-principal-range', calculateCI);
-            bindDualControl('ci-rate', 'ci-rate-range', calculateCI);
-            bindDualControl('ci-tenure', 'ci-tenure-range', calculateCI);
-
-            bindDualControl('fire-expense', 'fire-expense-range', calculateFIRE);
-            bindDualControl('fire-savings', 'fire-savings-range', calculateFIRE);
-            bindDualControl('fire-return', 'fire-return-range', calculateFIRE);
-            bindDualControl('fire-inflation', 'fire-inflation-range', calculateFIRE);
-
-            bindDualControl('cagr-initial', 'cagr-initial-range', calculateCAGR);
-            bindDualControl('cagr-final', 'cagr-final-range', calculateCAGR);
-            bindDualControl('cagr-years', 'cagr-years-range', calculateCAGR);
-
-            bindDualControl('rd-monthly', 'rd-monthly-range', calculateRD);
-            bindDualControl('rd-rate', 'rd-rate-range', calculateRD);
-            bindDualControl('rd-tenure', 'rd-tenure-range', calculateRD);
-
-            bindDualControl('prep-loan', 'prep-loan-range', calculatePrepayment);
-            bindDualControl('prep-rate', 'prep-rate-range', calculatePrepayment);
-            bindDualControl('prep-tenure', 'prep-tenure-range', calculatePrepayment);
-            bindDualControl('prep-extra', 'prep-extra-range', calculatePrepayment);
-
-            // Calculate Default State
-            calculateFD();
-            calculateLoan();
-            calculateSIP();
-            calculateCI();
-            calculateFIRE();
-            calculateCAGR();
-            calculateRD();
-            calculatePrepayment();
-        };
     </script>
 </body>
 </html>
+```
